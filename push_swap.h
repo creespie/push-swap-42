@@ -9,6 +9,7 @@
 typedef struct		s_list
 {
 	void			*content;
+	void			*order;
 	struct s_list	*next;
 }					t_list;
 
