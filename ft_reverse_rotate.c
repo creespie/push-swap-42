@@ -1,23 +1,23 @@
 #include "push_swap.h"
 
-void	ft_ra(t_stack **stack_a)
+void	ft_rra(t_stack **stack_a)
 {
 	t_stack	*temp;
 
 	temp = *stack_a;
-	*stack_a = temp->next;
+	*stack_a = temp->prev;
 }
 
-void	ft_rb(t_stack **stack_b)
+void	ft_rrb(t_stack **stack_b)
 {
 	t_stack	*temp;
 
 	temp = *stack_b;
-	*stack_b = temp->next;
+	*stack_b = temp->prev;
 }
 
 void	ft_rr(t_stack **stack_b, t_stack **stack_a)
 {
-	ft_ra(stack_a);
-	ft_rb(stack_b);
+	ft_rra(stack_a);
+	ft_rrb(stack_b);
 }

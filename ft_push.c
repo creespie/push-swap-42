@@ -1,33 +1,47 @@
 #include "push_swap.h"
 
-void	ft_pa(t_list *stack_a, t_list *stack_b)
+void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 {
-	t_list 	*na;
-	t_list 	*nb;
-	t_list	*temp;
+	t_stack *nb;
+	t_stack	*n_next;
+	t_stack	*n_prev;
 
-	nb = stack_b->next;
-	if (nb == NULL)
-		return (NULL);
-	temp = nb->next;
-	na = stack_a->next;
-	stack_a->next = nb;
-	nb->next = na;
-	stack_b->next = temp;
+	if (*stack_b = NULL)
+		return ;
+	nb = *stack_b;
+	n_next = nb->next;
+	n_prev = nb->prev;
+	n_next->prev = n_prev;
+	n_prev->next = n_next;
+	*stack_b = n_next;
+	n_next = *stack_a;
+	n_prev = n_next->prev;
+	n_next->prev = nb;
+	nb->next = n_next;
+	n_prev->next = nb;
+	nb->prev =n_prev;
+	*stack_a = nb;
 }
 
-void	ft_pb(t_list *stack_a, t_list *stack_b)
+void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 {
-	t_list 	*na;
-	t_list 	*nb;
-	t_list	*temp;
+	t_stack *na;
+	t_stack	*n_next;
+	t_stack	*n_prev;
 
-	na = stack_a->next;
-	if (na == NULL)
-		return (NULL);
-	temp = na->next;
-	nb = stack_b->next;
-	stack_b->next = na;
-	na->next = nb;
-	stack_a->next = temp;
+	if (*stack_a = NULL)
+		return ;
+	na = *stack_a;
+	n_next = na->next;
+	n_prev = na->prev;
+	n_next->prev = n_prev;
+	n_prev->next = n_next;
+	*stack_a = n_next;
+	n_next = *stack_b;
+	n_prev = n_next->prev;
+	n_next->prev = na;
+	na->next = n_next;
+	n_prev->next = na;
+	na->prev =n_prev;
+	*stack_b = na;
 }
