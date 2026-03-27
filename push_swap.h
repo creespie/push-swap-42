@@ -6,11 +6,12 @@
 #include <stddef.h>
 #include "libft/libft.h"
 
-typedef struct		s_list
+typedef struct		s_stack
 {
-	void			*content;
-	void			*order;
+	int				content;
+	int				index;
 	struct s_list	*next;
-}					t_list;
+	struct s_list	*prev;
+}					t_stack;
 
 #endif

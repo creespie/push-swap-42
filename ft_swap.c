@@ -4,13 +4,9 @@ void	ft_sa(t_list *stack_a)
 {
 	t_list	*n1;
 	t_list	*n2;
+	t_list	*temp;
 
-	n1 = stack_a->next;
-	n2 = n1->next;
-	if (n1 == NULL || n2 == NULL)
-		return (NULL);
-	n2->next = n1;
-	stack_a->next = n2;
+	if (ft_lstsize(stack_a) < 3)
 }
 
 void	ft_sb(t_list *stack_b)
