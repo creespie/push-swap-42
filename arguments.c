@@ -98,7 +98,7 @@ int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b, int i)
 		}
 		i++;
 	}
-	return ;
+	return (0);
 }
 
 int	ft_position(t_stack *current, t_stack *stack_a, int size)
@@ -121,7 +121,7 @@ int	ft_position(t_stack *current, t_stack *stack_a, int size)
 		}
 		i++;
 	}
-	return;
+	return (0);
 }
 
 int	ft_compare(int	pos, int spot, int	pos_2, int spot_2)
@@ -141,9 +141,9 @@ int	ft_compare(int	pos, int spot, int	pos_2, int spot_2)
 	if ((pos_2 > 0 && spot_2 > 0)|| (pos_2 < 0 && spot_2 < 0))
 	{
 		if ((pos_2 > 0 && pos_2 > spot_2) || (pos_2 < 0 && pos_2 < spot_2))
-			total = pos_2;
+			total_2 = pos_2;
 		else
-			total = spot_2;
+			total_2 = spot_2;
 	}
 	else
 		total_2 = (spot_2 * -1) + pos_2;
@@ -182,12 +182,12 @@ t_stack	*ft_fastest(t_stack *stack_a, t_stack *stack_b, int size, int position)
 	return (current);
 }
 
-void	ft_execute(t_stack *stack_a, t_stack *stack_b, t_stack *fastest, int size)
+void	ft_execute(t_stack **stack_a, t_stack **stack_b, t_stack *fastest, int size)
 {
 	int	position;
 	int	spot;
 
-	position = ft_position(fastest, stack_a, size);
+	position = ft_position(fastest, *stack_a, size);
 	spot = ft_find_spot(fastest, stack_b, ft_lst_count(stack_b), 0);
 	while (position > 0 && spot > 0)
 	{
@@ -221,7 +221,7 @@ void	ft_execute(t_stack *stack_a, t_stack *stack_b, t_stack *fastest, int size)
 		ft_rrb(&stack_a, 1);
 		spot++;
 	}
-	ft_pa(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
 }
 
 void	ft_sort_three(t_stack **stack)
