@@ -213,7 +213,7 @@ void	ft_execute(t_stack *stack_a, t_stack *stack_b, t_stack *fastest, int size)
 	ft_pa(&stack_a, &stack_b);
 }
 
-void	ft_fix_three(t_stack **stack)
+void	ft_sort_three(t_stack **stack)
 {
 	t_stack	*one;
 	t_stack	*two;
@@ -224,14 +224,19 @@ void	ft_fix_three(t_stack **stack)
 	three = two->next;
 	if (one->index > two->index && two->index > three->index)
 	{
-		ft_ra(stack);
-		ft_ra(stack);
+		ft_ra(stack, 1);
+		ft_ra(stack, 1);
 	}
-	if (one->index > two->index && two->index < three->index)
-		ft_ra(stack);
+	if (one->index > two->index && one->index > three->index && two->index < three->index )
+		ft_ra(stack, 1);
 	if (one->index > two->index)
 		ft_sa(stack);
-	
-
-
+	if (one->index > three->index)
+		ft_rra(stack, 1);
+	if (two->index > three->index)
+	{
+		ft_ra(stack, 1);
+		ft_sa(stack);
+		ft_rra(stack, 1);
+	}
 }
