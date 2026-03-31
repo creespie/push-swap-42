@@ -23,3 +23,22 @@ void ft_lstadd_back_adapt(t_stack **lst, t_stack *new)
 	new->prev = temp;
 	new -> next = NULL;
 }
+
+int	ft_lst_count(t_stack *stack)
+{
+	t_stack *first;
+	t_stack *iter;
+	int		i;
+	
+	if (stack == NULL)
+		return (0);
+	i = 1;
+	first = stack;
+	iter = first->next;
+	while (iter != first)
+	{
+		iter = iter->next;
+		i++;
+	}
+	return (i);
+}
