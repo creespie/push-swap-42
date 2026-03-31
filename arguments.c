@@ -170,3 +170,51 @@ t_stack	*ft_fastest(t_stack *stack_a, t_stack *stack_b, int size, int position)
 	}
 	return (current);
 }
+
+void	ft_execute(t_stack *stack_a, t_stack *stack_b, t_stack *fastest, int size)
+{
+	int	position;
+	int	spot;
+
+	position = ft_position(fastest, stack_a, size);
+	spot = ft_find_spot(fastest, stack_b, ft_lst_count(stack_b));
+	while (position > 0 && spot > 0)
+	{
+		ft_rr(&stack_a, &stack_b);
+		write(1, "rr", 2);
+		position--;
+		spot--;
+	}
+	while (position < 0 && spot < 0)
+	{
+		ft_rrr(&stack_a, &stack_b);
+		write(1, "rrr", 3);
+		position++;
+		spot++;
+	}
+	while (position > 0)
+	{
+		ft_ra(&stack_a);
+		write(1, "ra", 2);
+		position--;
+	}
+	while (spot > 0)
+	{
+		ft_rb(&stack_a);
+		write(1, "rb", 2);
+		spot--;
+	}
+	while (position < 0)
+	{
+		ft_rra(&stack_a);
+		write(1, "rra", 3);
+		position++;
+	}
+	while (spot < 0)
+	{
+		ft_rrb(&stack_a);
+		write(1, "rrb", 3);
+		spot++;
+	}
+	ft_pa(&stack_a, &stack_b);
+}

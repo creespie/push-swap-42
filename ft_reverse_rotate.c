@@ -16,7 +16,7 @@ void	ft_rrb(t_stack **stack_b)
 	*stack_b = temp->prev;
 }
 
-void	ft_rr(t_stack **stack_b, t_stack **stack_a)
+void	ft_rrr(t_stack **stack_b, t_stack **stack_a)
 {
 	ft_rra(stack_a);
 	ft_rrb(stack_b);
