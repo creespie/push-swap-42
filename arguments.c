@@ -123,19 +123,29 @@ int	ft_position(t_stack *current, t_stack *stack_a, int size)
 	return;
 }
 
-int	ft_compare(int	position, int spot, int	position_2, int spot_2)
+int	ft_compare(int	pos, int spot, int	pos_2, int spot_2)
 {
 	int	total;
 	int	total_2;
 
-	if ((position > 0 && spot > 0)|| (position < 0 && spot < 0))
-		total = spot - position;
+	if ((pos > 0 && spot > 0)|| (pos < 0 && spot < 0))
+	{
+		if ((pos > 0 && pos > spot) || (pos < 0 && pos < spot))
+			total = pos;
+		else
+			total = spot;
+	}
 	else
-		total = (spot * -1) + position;
-	if ((position_2 > 0 && spot_2 > 0)|| (position_2 < 0 && spot_2 < 0))
-		total_2 = spot_2 - position_2;
+		total = (spot * -1) + pos;
+	if ((pos_2 > 0 && spot_2 > 0)|| (pos_2 < 0 && spot_2 < 0))
+	{
+		if ((pos_2 > 0 && pos_2 > spot_2) || (pos_2 < 0 && pos_2 < spot_2))
+			total = pos_2;
+		else
+			total = spot_2;
+	}
 	else
-		total_2 = (spot_2 * -1) + position_2;
+		total_2 = (spot_2 * -1) + pos_2;
 	if (total < 0)
 		total *= -1;
 	if (total_2 < 0)
