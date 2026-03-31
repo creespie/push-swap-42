@@ -181,39 +181,39 @@ void	ft_execute(t_stack *stack_a, t_stack *stack_b, t_stack *fastest, int size)
 	while (position > 0 && spot > 0)
 	{
 		ft_rr(&stack_a, &stack_b);
-		write(1, "rr", 2);
+		write(1, "rr\n", 3);
 		position--;
 		spot--;
 	}
 	while (position < 0 && spot < 0)
 	{
 		ft_rrr(&stack_a, &stack_b);
-		write(1, "rrr", 3);
+		write(1, "rrr\n", 4);
 		position++;
 		spot++;
 	}
 	while (position > 0)
 	{
 		ft_ra(&stack_a);
-		write(1, "ra", 2);
+		write(1, "ra\n", 3);
 		position--;
 	}
 	while (spot > 0)
 	{
 		ft_rb(&stack_a);
-		write(1, "rb", 2);
+		write(1, "rb\n", 3);
 		spot--;
 	}
 	while (position < 0)
 	{
 		ft_rra(&stack_a);
-		write(1, "rra", 3);
+		write(1, "rra\n", 4);
 		position++;
 	}
 	while (spot < 0)
 	{
 		ft_rrb(&stack_a);
-		write(1, "rrb", 3);
+		write(1, "rrb\n", 4);
 		spot++;
 	}
 	ft_pa(&stack_a, &stack_b);
