@@ -181,40 +181,57 @@ void	ft_execute(t_stack *stack_a, t_stack *stack_b, t_stack *fastest, int size)
 	while (position > 0 && spot > 0)
 	{
 		ft_rr(&stack_a, &stack_b);
-		write(1, "rr\n", 3);
 		position--;
 		spot--;
 	}
 	while (position < 0 && spot < 0)
 	{
 		ft_rrr(&stack_a, &stack_b);
-		write(1, "rrr\n", 4);
 		position++;
 		spot++;
 	}
 	while (position > 0)
 	{
-		ft_ra(&stack_a);
-		write(1, "ra\n", 3);
+		ft_ra(&stack_a, 1);
 		position--;
 	}
 	while (spot > 0)
 	{
-		ft_rb(&stack_a);
-		write(1, "rb\n", 3);
+		ft_rb(&stack_a, 1);
 		spot--;
 	}
 	while (position < 0)
 	{
-		ft_rra(&stack_a);
-		write(1, "rra\n", 4);
+		ft_rra(&stack_a, 1);
 		position++;
 	}
 	while (spot < 0)
 	{
-		ft_rrb(&stack_a);
-		write(1, "rrb\n", 4);
+		ft_rrb(&stack_a, 1);
 		spot++;
 	}
 	ft_pa(&stack_a, &stack_b);
+}
+
+void	ft_fix_three(t_stack **stack)
+{
+	t_stack	*one;
+	t_stack	*two;
+	t_stack *three;
+
+	one = *stack;
+	two = one->next;
+	three = two->next;
+	if (one->index > two->index && two->index > three->index)
+	{
+		ft_ra(stack);
+		ft_ra(stack);
+	}
+	if (one->index > two->index && two->index < three->index)
+		ft_ra(stack);
+	if (one->index > two->index)
+		ft_sa(stack);
+	
+
+
 }

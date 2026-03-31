@@ -21,6 +21,7 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 	n_prev->next = nb;
 	nb->prev =n_prev;
 	*stack_a = nb;
+	write(1, "pa\n", 3);
 }
 
 void	ft_pb(t_stack **stack_a, t_stack **stack_b)
@@ -44,4 +45,5 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 	n_prev->next = na;
 	na->prev =n_prev;
 	*stack_b = na;
+	write(1, "pb\n", 3);
 }
