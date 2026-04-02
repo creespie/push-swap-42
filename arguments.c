@@ -187,40 +187,40 @@ void	ft_execute(t_stack **stack_a, t_stack **stack_b, t_stack *fastest, int size
 	int	spot;
 
 	position = ft_position(fastest, *stack_a, size);
-	spot = ft_find_spot(fastest, stack_b, ft_lst_count(stack_b), 0);
+	spot = ft_find_spot(fastest, *stack_b, ft_lst_count(*stack_b), 0);
 	while (position > 0 && spot > 0)
 	{
-		ft_rr(&stack_a, &stack_b);
+		ft_rr(stack_a, stack_b);
 		position--;
 		spot--;
 	}
 	while (position < 0 && spot < 0)
 	{
-		ft_rrr(&stack_a, &stack_b);
+		ft_rrr(stack_a, stack_b);
 		position++;
 		spot++;
 	}
 	while (position > 0)
 	{
-		ft_ra(&stack_a, 1);
+		ft_ra(stack_a, 1);
 		position--;
 	}
 	while (spot > 0)
 	{
-		ft_rb(&stack_a, 1);
+		ft_rb(stack_b, 1);
 		spot--;
 	}
 	while (position < 0)
 	{
-		ft_rra(&stack_a, 1);
+		ft_rra(stack_a, 1);
 		position++;
 	}
 	while (spot < 0)
 	{
-		ft_rrb(&stack_a, 1);
+		ft_rrb(stack_b, 1);
 		spot++;
 	}
-	ft_pb(&stack_a, &stack_b);
+	ft_pb(stack_a, stack_b);
 }
 
 void	ft_sort_three(t_stack **stack)
@@ -352,6 +352,7 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 		{
 			ft_pa(stack_a, stack_b);
 			ft_sa(stack_a, 1);
+			ft_ra(stack_a, 1);
 		}
 		else if (top_b->index < top_a->index && top_b->index < bottom_a->index)
 		{
@@ -367,7 +368,6 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 
 void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 {
-	int	size;
 	t_stack	*best;
 
 	ft_pb(stack_a, stack_b);
@@ -389,21 +389,59 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 		}
 }
 
+int	ft_check_double(int *arr, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argc, char *argv[])
 {
 	int	i;
+	int	j;
 	int	*arr;
 	t_stack *stack_a;
 	t_stack	*stack_b;
 
+	if (argc <= 1)
+		return (0);
+	stack_a = NULL;
+	stack_b = NULL;
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_isdigit(argv[i]) == 0)
+		j = 0;
+		if (argv[i][j] == '-')
+			j++;
+		if (argv[i][j] == '\0')
 		{
 			write (2, "Error\n", 6);
-			return ;
+			return(0);
 		}
+		while (argv[i][j])
+		{
+			if (ft_isdigit(argv[i][j]) == 0)
+			{
+				write (2, "Error\n", 6);
+				return(0);
+			}
+			j++;
+		}
+		i++;
 	}
 	i = 0;
 	arr = malloc((argc - 1) * sizeof(int));
@@ -412,15 +450,20 @@ int	main(int argc, char *argv[])
 		arr[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
+	if (ft_check_double(arr, argc - 1) == 0)
+	{
+		write (2, "Error\n", 6);
+		free(arr);
+		return(0);
+	}
 	ft_convert_stack(arr, &stack_a, argc - 1);
-	ft_close_circle(stack_a);
 	ft_sort_arr(arr, argc - 1);
 	ft_add_order(arr, stack_a, argc-1);
-	if (ft_check_order == 1)
+	if (ft_check_order(stack_a, argc - 1) == 1)
 	{}
 	else
-	{
-
-	}
-	
+		ft_sort_everything(&stack_a, &stack_b);
+	ft_free_stack(&stack_a, argc - 1);
+	free(arr);
+	return (0);
 }
