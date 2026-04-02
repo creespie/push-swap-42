@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_convert_stack(int *arr, t_stack **stack_a, int size)
+void	ft_convert_stack(int *arr, t_stack **stack_a, int size)
 {
 	int	i;
 	t_stack *new;
@@ -17,7 +17,6 @@ int	ft_convert_stack(int *arr, t_stack **stack_a, int size)
 		size--;
 	}
 	ft_close_circle(*stack_a);
-	return (i);
 }
 
 void	ft_close_circle(t_stack *stack_a)
@@ -89,7 +88,7 @@ int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b, int i)
 	{
 		n1 = n2;
 		n2 = n1->next;
-		if (n1->index < current->index && n2->index > current->index)
+		if (n1->index > current->index && n2->index < current->index)
 		{
 			if (i <= size_b / 2)
 				return (i);
@@ -299,4 +298,129 @@ void	ft_free_stack(t_stack **stack, int size)
 		i++;
 	}
 	*stack = NULL;
+}
+
+void	ft_highest_up(t_stack **stack_b, int size, 	int	i, int	position)
+{
+	int	highest_index;
+	t_stack	*current;
+
+	current = *stack_b;
+	highest_index = current->index;
+	while (i < size)
+	{
+		i++;
+		current = current->next;
+		if (current->index > highest_index)
+		{
+			highest_index = current->index;
+			position = i;
+		}
+	}
+	while (position <= size / 2 && position > 0)
+	ft_highest_app(stack_b, &position, 0);
+	while (position > size / 2 && position <= size)
+	ft_highest_app(stack_b, &position, 1);
+}
+
+void	ft_highest_app(t_stack **stack_b, int *position, int flag)
+{
+	if (flag == 0)
+	{
+		ft_rb(stack_b, 1);
+		(*position)--;
+	}
+	else if (flag == 1)
+	{
+		ft_rrb(stack_b, 1);
+		(*position)++;
+	}
+}
+
+void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*top_b;
+	t_stack	*top_a;
+	t_stack	*bottom_a;
+
+	while (ft_lst_count(*stack_b) > 0)
+	{
+		top_b = *stack_b;
+		top_a = *stack_a;
+		bottom_a = top_a->prev;
+		if (top_b->index > top_a->index && top_b->index > bottom_a->index)
+		{
+			ft_pa(stack_a, stack_b);
+			ft_sa(stack_a, 1);
+		}
+		else if (top_b->index < top_a->index && top_b->index < bottom_a->index)
+		{
+			ft_pa(stack_a, stack_b);
+			ft_ra(stack_a, 1);
+		}
+		else if (top_b->index < top_a->index && top_b->index > bottom_a->index)
+			ft_pa(stack_a, stack_b);
+		else
+			ft_rra(stack_a, 1);
+	}
+}
+
+void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
+{
+	int	size;
+	t_stack	*best;
+
+	ft_pb(stack_a, stack_b);
+	ft_pb(stack_a, stack_b);
+	while (ft_lst_count(*stack_a) > 3)
+	{
+		best = ft_fastest(*stack_a, *stack_b, ft_lst_count(*stack_a), 0);
+		ft_execute(stack_a, stack_b, best, ft_lst_count(*stack_a));
+	}
+	ft_highest_up(stack_b, ft_lst_count(*stack_b), 0, 0);
+	ft_sort_three(stack_a);
+	ft_rra(stack_a, 1);
+	ft_b_to_a(stack_a, stack_b);
+	best = *stack_a;
+	while (best->index > 0)
+		{
+		best = *stack_a;
+		ft_rra(stack_a, 1);
+		}
+}
+
+int	main(int argc, char *argv[])
+{
+	int	i;
+	int	*arr;
+	t_stack *stack_a;
+	t_stack	*stack_b;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_isdigit(argv[i]) == 0)
+		{
+			write (2, "Error\n", 6);
+			return ;
+		}
+	}
+	i = 0;
+	arr = malloc((argc - 1) * sizeof(int));
+	while (i < argc - 1)
+	{
+		arr[i] = ft_atoi(argv[i + 1]);
+		i++;
+	}
+	ft_convert_stack(arr, &stack_a, argc - 1);
+	ft_close_circle(stack_a);
+	ft_sort_arr(arr, argc - 1);
+	ft_add_order(arr, stack_a, argc-1);
+	if (ft_check_order == 1)
+	{}
+	else
+	{
+
+	}
+	
 }

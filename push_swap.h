@@ -14,4 +14,6 @@ typedef struct		s_stack
 	struct s_list	*prev;
 }					t_stack;
 
+int	ft_lst_count(t_stack *stack);
+
 #endif
