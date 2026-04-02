@@ -251,3 +251,52 @@ void	ft_sort_three(t_stack **stack)
 		ft_rra(stack, 1);
 	}
 }
+
+void	ft_sort_two(t_stack **stack)
+{
+	t_stack *one;
+	t_stack	*two;
+
+	one = *stack;
+	two = one->next;
+	if (one->index > two->index)
+		ft_ra(stack, 1);
+}
+
+int	ft_check_order(t_stack *stack, int size)
+{
+	int	i;
+	t_stack	*check;
+	
+	check = stack;
+	i = 0;
+	while (i < size)
+	{
+		if (check->index == i)
+		{
+			check = check->next;
+			i++;
+		}
+		else
+			return (0);
+	}
+	return (1);
+}
+
+void	ft_free_stack(t_stack **stack, int size)
+{
+	int	i;
+	t_stack	*to_free;
+	t_stack	*temp;
+
+	i = 0;
+	to_free = *stack;
+	while (i < size)
+	{
+		temp = to_free->next;
+		free(to_free);
+		to_free = temp;
+		i++;
+	}
+	*stack = NULL;
+}
