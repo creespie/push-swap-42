@@ -409,6 +409,29 @@ int	ft_check_double(int *arr, int size)
 	return (1);
 }
 
+void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	t_stack	*best;
+
+	if (size == 2)
+		ft_sort_two(stack_a);
+	else if (size == 3)
+		ft_sort_three(stack_a);
+	else if (size == 4)
+	{
+		ft_pb(stack_a, stack_b);
+		ft_sort_three(stack_a);
+		ft_rra(stack_a, 1);
+		ft_b_to_a(stack_a, stack_b);
+		best = *stack_a;
+		while (best->index > 0)
+		{
+			best = *stack_a;
+			ft_rra(stack_a, 1);
+		}
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	int	i;
@@ -462,7 +485,12 @@ int	main(int argc, char *argv[])
 	if (ft_check_order(stack_a, argc - 1) == 1)
 	{}
 	else
-		ft_sort_everything(&stack_a, &stack_b);
+	{
+		if (argc - 1 <= 4)
+			ft_sort_few(&stack_a, &stack_b, argc - 1);
+		else
+			ft_sort_everything(&stack_a, &stack_b);
+	}
 	ft_free_stack(&stack_a, argc - 1);
 	free(arr);
 	return (0);
