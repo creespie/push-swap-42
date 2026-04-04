@@ -48,5 +48,6 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b);
 int	ft_check_double(int *arr, int size);
 void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size);
 t_stack *ft_lstlast_adapt(t_stack *lst);
+void ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 #endif

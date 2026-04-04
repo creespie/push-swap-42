@@ -60,7 +60,6 @@ int	main(int argc, char *argv[])
 			ft_sort_everything(&stack_a, &stack_b);
 	}
 	ft_free_stack(&stack_a, ft_lst_count(stack_a));
-	ft_free_stack(&stack_b, ft_lst_count(stack_b));
 	free(arr);
 	return (0);
 }

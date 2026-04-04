@@ -34,11 +34,16 @@ int	ft_lst_count(t_stack *stack)
 		return (0);
 	i = 1;
 	first = stack;
-	iter = first->next;
-	while (iter != first)
+	if (first->next == first)
+		return (1);
+	else
 	{
-		iter = iter->next;
-		i++;
+		iter = first->next;
+		while (iter != first)
+		{
+			iter = iter->next;
+			i++;
+		}
 	}
 	return (i);
 }

@@ -1,5 +1,41 @@
 #include "push_swap.h"
 
+void ft_print_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+    t_stack *current;
+    int     size_a;
+    int     size_b;
+    int     i;
+
+    size_a = ft_lst_count(stack_a);
+    size_b = ft_lst_count(stack_b);
+    write(1, "--- STACK A ---\n", 16);
+    current = stack_a;
+    i = 0;
+    while (i < size_a)
+    {
+        ft_putnbr(current->content);
+        write(1, " (idx:", 6);
+        ft_putnbr(current->index);
+        write(1, ")\n", 2);
+        current = current->next;
+        i++;
+    }
+    write(1, "--- STACK B ---\n", 16);
+    current = stack_b;
+    i = 0;
+    while (i < size_b)
+    {
+        ft_putnbr(current->content);
+        write(1, " (idx:", 6);
+        ft_putnbr(current->index);
+        write(1, ")\n", 2);
+        current = current->next;
+        i++;
+    }
+    write(1, "---------------\n", 16);
+}
+
 void	b_to_a_append(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_pa(stack_a, stack_b);
@@ -15,15 +51,6 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 
 	while (ft_lst_count(*stack_b) > 0)
 	{
-		ft_putnbr(ft_lst_count(*stack_b));
-		write(1, " size_b\n", 8);
-		ft_putnbr(top_b->index);
-		write(1, " ", 1);
-		ft_putnbr(top_a->index);
-		write(1, " ", 1);
-		ft_putnbr(bottom_a->index);
-		write(1, "\n", 1);
-		write(1, "loop b\n", 7);
 		top_b = *stack_b;
 		top_a = *stack_a;
 		bottom_a = top_a->prev;
@@ -47,9 +74,10 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 
 	ft_pb(stack_a, stack_b);
 	ft_pb(stack_a, stack_b);
+	if ((*stack_b)->index > (*stack_b)->prev->index)
+		ft_rb(stack_b, 1);
 	while (ft_lst_count(*stack_a) > 3)
 	{
-		write(1, "loop a\n", 7);
 		best = ft_fastest(*stack_a, *stack_b, ft_lst_count(*stack_a), 0);
 		ft_execute(stack_a, stack_b, best, ft_lst_count(*stack_a));
 	}
@@ -58,9 +86,7 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 	ft_rra(stack_a, 1);
 	ft_b_to_a(stack_a, stack_b);
 	best = *stack_a;
-	while (best->index > 0)
-		{
-		best = *stack_a;
+	while ((*stack_a)->index > 0)
 		ft_rra(stack_a, 1);
-		}
+	ft_print_stacks(*stack_a, *stack_b);
 }

@@ -13,7 +13,10 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 	n_prev = nb->prev;
 	n_next->prev = n_prev;
 	n_prev->next = n_next;
-	*stack_b = n_next;
+	if (nb == n_next && nb == n_prev)
+		*stack_b = NULL;
+	else
+		*stack_b = n_next;
 	n_next = *stack_a;
 	n_prev = n_next->prev;
 	n_next->prev = nb;

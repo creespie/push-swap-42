@@ -18,7 +18,7 @@ void	ft_sort_three(t_stack **stack)
 	three = two->next;
 	if (one->index > two->index && two->index > three->index)
 	{
-		ft_rra(stack, 1);
+		ft_ra(stack, 1);
 		ft_sa(stack, 1);
 	}
 	else if (one->index > two->index && one->index > three->index && two->index < three->index )
@@ -44,8 +44,6 @@ void	ft_sort_two(t_stack **stack)
 
 void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	t_stack	*best;
-
 	if (size == 2)
 		ft_sort_two(stack_a);
 	else if (size == 3)
@@ -55,12 +53,10 @@ void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size)
 		ft_pb(stack_a, stack_b);
 		ft_sort_three(stack_a);
 		ft_rra(stack_a, 1);
+		ft_highest_up(stack_b, ft_lst_count(*stack_b), 0, 0);
 		ft_b_to_a(stack_a, stack_b);
-		best = *stack_a;
-		while (best->index > 0)
-		{
-			best = *stack_a;
+		while ((*stack_a)->index > 0)
 			ft_rra(stack_a, 1);
-		}
+		ft_print_stacks(*stack_a, *stack_b);
 	}
 }
