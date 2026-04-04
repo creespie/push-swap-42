@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+void	three_append(t_stack **stack)
+{
+	ft_ra(stack, 1);
+	ft_sa(stack, 1);
+	ft_rra(stack, 1);
+}
+
 void	ft_sort_three(t_stack **stack)
 {
 	t_stack	*one;
@@ -21,11 +28,7 @@ void	ft_sort_three(t_stack **stack)
 	else if (one->index > three->index)
 		ft_rra(stack, 1);
 	else if (two->index > three->index)
-	{
-		ft_ra(stack, 1);
-		ft_sa(stack, 1);
-		ft_rra(stack, 1);
-	}
+		three_append(stack);
 }
 
 void	ft_sort_two(t_stack **stack)
@@ -38,7 +41,6 @@ void	ft_sort_two(t_stack **stack)
 	if (one->index > two->index)
 		ft_ra(stack, 1);
 }
-
 
 void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size)
 {

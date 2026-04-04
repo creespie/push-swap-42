@@ -1,5 +1,12 @@
 #include "push_swap.h"
 
+void	b_to_a_append(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_pa(stack_a, stack_b);
+	ft_sa(stack_a, 1);
+	ft_ra(stack_a, 1);
+}
+
 void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*top_b;
@@ -12,11 +19,7 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 		top_a = *stack_a;
 		bottom_a = top_a->prev;
 		if (top_b->index > top_a->index && top_b->index > bottom_a->index)
-		{
-			ft_pa(stack_a, stack_b);
-			ft_sa(stack_a, 1);
-			ft_ra(stack_a, 1);
-		}
+			b_to_a_append(stack_a, stack_b);
 		else if (top_b->index < top_a->index && top_b->index < bottom_a->index)
 		{
 			ft_pa(stack_a, stack_b);
