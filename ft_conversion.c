@@ -25,7 +25,7 @@ void	ft_close_circle(t_stack *stack_a)
 	t_stack	*last;
 
 	first = stack_a;
-	last = ft_lstlast(stack_a);
+	last = ft_lstlast_adapt(stack_a);
 	first->prev = last;
 	last->next = first;
 }

@@ -11,6 +11,7 @@ void	ft_sa(t_stack **stack_a, int flag)
 	n1 = *stack_a;
 	if (n1 -> next == NULL)
 		return ;
+	n2 = n1->next;
 	temp = n1->content;
 	n1->content = n2->content;
 	n2->content = temp;
@@ -32,6 +33,7 @@ void	ft_sb(t_stack **stack_b, int flag)
 	n1 = *stack_b;
 	if (n1 -> next == NULL)
 		return ;
+	n2 = n1->next;
 	temp = n1->content;
 	n1->content = n2->content;
 	n2->content = temp;

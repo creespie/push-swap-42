@@ -18,7 +18,7 @@ void ft_lstadd_back_adapt(t_stack **lst, t_stack *new)
 {
 	t_stack *temp;
 
-	temp = ft_lstlast(*lst);
+	temp = ft_lstlast_adapt(*lst);
 	temp -> next = new;
 	new->prev = temp;
 	new -> next = NULL;
@@ -41,4 +41,13 @@ int	ft_lst_count(t_stack *stack)
 		i++;
 	}
 	return (i);
+}
+
+t_stack *ft_lstlast_adapt(t_stack *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return(lst);
 }

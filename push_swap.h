@@ -10,8 +10,8 @@ typedef struct		s_stack
 {
 	int				content;
 	int				index;
-	struct s_list	*next;
-	struct s_list	*prev;
+	struct s_stack	*next;
+	struct s_stack	*prev;
 }					t_stack;
 
 void	ft_pa(t_stack **stack_a, t_stack **stack_b);
@@ -47,5 +47,6 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b);
 int	ft_check_double(int *arr, int size);
 void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size);
+t_stack *ft_lstlast_adapt(t_stack *lst);
 
 #endif

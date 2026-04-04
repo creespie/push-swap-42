@@ -6,7 +6,7 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*n_next;
 	t_stack	*n_prev;
 
-	if (*stack_b = NULL)
+	if (*stack_b == NULL)
 		return ;
 	nb = *stack_b;
 	n_next = nb->next;
@@ -30,7 +30,7 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*n_next;
 	t_stack	*n_prev;
 
-	if (*stack_a = NULL)
+	if (*stack_a == NULL)
 		return ;
 	na = *stack_a;
 	n_next = na->next;
