@@ -15,6 +15,15 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 
 	while (ft_lst_count(*stack_b) > 0)
 	{
+		ft_putnbr(ft_lst_count(*stack_b));
+		write(1, " size_b\n", 8);
+		ft_putnbr(top_b->index);
+		write(1, " ", 1);
+		ft_putnbr(top_a->index);
+		write(1, " ", 1);
+		ft_putnbr(bottom_a->index);
+		write(1, "\n", 1);
+		write(1, "loop b\n", 7);
 		top_b = *stack_b;
 		top_a = *stack_a;
 		bottom_a = top_a->prev;
@@ -40,6 +49,7 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 	ft_pb(stack_a, stack_b);
 	while (ft_lst_count(*stack_a) > 3)
 	{
+		write(1, "loop a\n", 7);
 		best = ft_fastest(*stack_a, *stack_b, ft_lst_count(*stack_a), 0);
 		ft_execute(stack_a, stack_b, best, ft_lst_count(*stack_a));
 	}

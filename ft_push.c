@@ -38,12 +38,21 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 	n_next->prev = n_prev;
 	n_prev->next = n_next;
 	*stack_a = n_next;
-	n_next = *stack_b;
-	n_prev = n_next->prev;
-	n_next->prev = na;
-	na->next = n_next;
-	n_prev->next = na;
-	na->prev =n_prev;
-	*stack_b = na;
+	if (*stack_b == NULL)
+	{
+		na->next = na;
+		na->prev = na;
+		*stack_b = na;
+	}
+	else
+	{
+		n_next = *stack_b;
+		n_prev = n_next->prev;
+		n_next->prev = na;
+		na->next = n_next;
+		n_prev->next = na;
+		na->prev =n_prev;
+		*stack_b = na;
+	}
 	write(1, "pb\n", 3);
 }

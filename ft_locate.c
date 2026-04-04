@@ -7,6 +7,8 @@ int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b, int i)
 
 	n1 = stack_b;
 	n2 = n1->prev;
+	if (!stack_b || size_b == 0)
+        return (0);
 	if (n2->index < current->index && n1->index > current->index)
 		return (0);
 	n2 = n1;

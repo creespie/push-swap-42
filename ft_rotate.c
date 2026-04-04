@@ -7,7 +7,7 @@ void	ft_ra(t_stack **stack_a, int flag)
 	temp = *stack_a;
 	*stack_a = temp->next;
 	if (flag == 1)
-		write(1, "rb\n", 3);
+		write(1, "ra\n", 3);
 }
 
 void	ft_rb(t_stack **stack_b, int flag)
