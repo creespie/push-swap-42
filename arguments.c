@@ -240,13 +240,13 @@ void	ft_sort_three(t_stack **stack)
 	else if (one->index > two->index && one->index > three->index && two->index < three->index )
 		ft_ra(stack, 1);
 	else if (one->index > two->index)
-		ft_sa(stack);
+		ft_sa(stack, 1);
 	else if (one->index > three->index)
 		ft_rra(stack, 1);
 	else if (two->index > three->index)
 	{
 		ft_ra(stack, 1);
-		ft_sa(stack);
+		ft_sa(stack, 1);
 		ft_rra(stack, 1);
 	}
 }
