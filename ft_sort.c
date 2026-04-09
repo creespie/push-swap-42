@@ -39,8 +39,27 @@ void ft_print_stacks(t_stack *stack_a, t_stack *stack_b)
 void	b_to_a_append(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_pa(stack_a, stack_b);
-	ft_sa(stack_a, 1);
 	ft_ra(stack_a, 1);
+}
+
+void	ft_right_rotation(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*top_b;
+	int	number;
+
+	top_b = *stack_b;
+	number = ft_find_spot_a(top_b, *stack_a, ft_lst_count(*stack_a), 1);
+	while (number > 0)
+	{
+		ft_ra(stack_a, 1);
+		number--;
+	}
+		while (number < 0)
+	{
+		ft_rra(stack_a, 1);
+		number++;
+	}
+	ft_pa(stack_a, stack_b);
 }
 
 void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
@@ -55,16 +74,16 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 		top_a = *stack_a;
 		bottom_a = top_a->prev;
 		if (top_b->index > top_a->index && top_b->index > bottom_a->index)
-			b_to_a_append(stack_a, stack_b);
-		else if (top_b->index < top_a->index && top_b->index < bottom_a->index)
 		{
 			ft_pa(stack_a, stack_b);
 			ft_ra(stack_a, 1);
 		}
+		else if (top_b->index > top_a->index && top_b->index < bottom_a->index)
+			ft_right_rotation(stack_a, stack_b);
 		else if (top_b->index < top_a->index && top_b->index > bottom_a->index)
 			ft_pa(stack_a, stack_b);
-		else
-			ft_rra(stack_a, 1);
+		else if (top_b->index < top_a->index && top_b->index < bottom_a->index)
+			ft_right_rotation(stack_a, stack_b);
 	}
 }
 
@@ -83,7 +102,6 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 	}
 	ft_highest_up(stack_b, ft_lst_count(*stack_b), 0, 0);
 	ft_sort_three(stack_a);
-	ft_rra(stack_a, 1);
 	ft_b_to_a(stack_a, stack_b);
 	best = *stack_a;
 	while ((*stack_a)->index > 0)

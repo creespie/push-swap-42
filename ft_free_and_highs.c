@@ -23,9 +23,11 @@ void	ft_highest_up(t_stack **stack_b, int size, 	int	i, int	position)
 	int	highest_index;
 	t_stack	*current;
 
+	position = 0;
 	current = *stack_b;
 	highest_index = current->index;
-	while (i < size)
+	i++;
+	while (i <= size)
 	{
 		i++;
 		current = current->next;
@@ -36,9 +38,9 @@ void	ft_highest_up(t_stack **stack_b, int size, 	int	i, int	position)
 		}
 	}
 	while (position <= size / 2 && position > 0)
-	ft_highest_app(stack_b, &position, 0);
+		ft_highest_app(stack_b, &position, 0);
 	while (position > size / 2 && position <= size)
-	ft_highest_app(stack_b, &position, 1);
+		ft_highest_app(stack_b, &position, 1);
 }
 
 void	ft_highest_app(t_stack **stack_b, int *position, int flag)

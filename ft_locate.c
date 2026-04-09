@@ -12,7 +12,7 @@ int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b, int i)
 	if (n2->index < current->index && n1->index > current->index)
 		return (0);
 	n2 = n1;
-	while (i < size_b)
+	while (i <= size_b)
 	{
 		n1 = n2;
 		n2 = n1->next;
@@ -24,6 +24,64 @@ int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b, int i)
 				return ((size_b - i) * -1);
 		}
 		i++;
+	}
+	return (0);
+}
+
+int	ft_find_spot_a(t_stack *current, t_stack *stack_a, int size_a, int i)
+{
+	t_stack	*n1;
+	t_stack *n2;
+	int		flag;
+
+	flag = 0;
+	n1 = stack_a;
+	n2 = n1;
+	while (i < size_a && flag == 0)
+	{
+		if (n1->index > current->index)
+			flag = 1;
+		n1 = n1->next;
+		i++;
+	}
+	if (flag == 0)
+	{
+		i = 0;
+		while (i < size_a)
+		{
+			if (n2->index > n1->index)
+				n2 = n1;
+			i++;
+		}
+		i = 0;
+		while (i < size_a)
+		{
+			if (n2 == n1)
+			{
+				if (i <= size_a / 2)
+					return (i);
+				else
+					return ((size_a - i) * -1);
+			}
+			i++;
+		}
+	}
+	else
+	{
+		i = 1;
+		while (i < size_a)
+		{
+			n1 = n2;
+			n2 = n1->next;
+			if (n1->index < current->index && n2->index > current->index)
+			{
+				if (i <= size_a / 2)
+					return (i);
+				else
+					return ((size_a - i) * -1);
+			}
+			i++;
+		}
 	}
 	return (0);
 }
