@@ -1,5 +1,60 @@
 #include "push_swap.h"
 
+int	ft_find_index(t_stack *stack, t_stack *to_find, int size)
+{
+	int	i;
+	t_stack	*current;
+
+	i = 0;
+	current = stack;
+	while (i < size)
+	{
+		if (current == to_find)
+			return (i);
+		current = current->next;
+		i++;
+	}
+	return (i);
+}
+
+t_stack	*ft_find_biggest(t_stack *stack, int size)
+{
+	int	loop;
+	t_stack	*current;
+	t_stack	*biggest;
+
+	loop = 1;
+	current = stack;
+	biggest = current;
+	while(loop < size)
+	{
+		current = current->next;
+		if (biggest->index < current->index)
+			biggest = current;
+		loop++;
+	}
+	return (biggest);
+}
+
+t_stack	*ft_find_smallest(t_stack *stack, int size)
+{
+	int	loop;
+	t_stack	*current;
+	t_stack	*smallest;
+
+	loop = 1;
+	current = stack;
+	smallest = current;
+	while(loop < size)
+	{
+		current = current->next;
+		if (smallest->index > current->index)
+			smallest = current;
+		loop++;
+	}
+	return (smallest);
+}
+
 int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b, int i)
 {
 	t_stack	*n1;
@@ -9,8 +64,22 @@ int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b, int i)
 	n2 = n1->prev;
 	if (!stack_b || size_b == 0)
         return (0);
-	if (n2->index < current->index && n1->index > current->index)
-		return (0);
+	if (ft_find_biggest(stack_b, size_b)->index < current->index)
+	{
+		i = ft_find_index(stack_b, ft_find_biggest(stack_b, size_b), size_b);
+		if (i <= size_b / 2)
+			return (i);
+		else
+			return ((size_b - i) * -1);
+	}
+	if (ft_find_smallest(stack_b, size_b)->index > current->index)
+	{
+		i = ft_find_index(stack_b, ft_find_biggest(stack_b, size_b), size_b);
+		if (i <= size_b / 2)
+			return (i);
+		else
+			return ((size_b - i) * -1);
+	}
 	n2 = n1;
 	while (i <= size_b)
 	{
