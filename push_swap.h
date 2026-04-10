@@ -41,7 +41,7 @@ void	ft_sort_three(t_stack **stack);
 void	ft_sort_two(t_stack **stack);
 int	ft_check_order(t_stack *stack, int size);
 void	ft_free_stack(t_stack **stack, int size);
-void	ft_highest_up(t_stack **stack_b, int size, 	int	i, int	position);
+void	ft_highest_up(t_stack **stack_b, int size, 	int	i);
 void	ft_highest_app(t_stack **stack_b, int *position, int flag);
 void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b);
@@ -49,6 +49,9 @@ int	ft_check_double(int *arr, int size);
 void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size);
 t_stack *ft_lstlast_adapt(t_stack *lst);
 int	ft_find_spot_a(t_stack *current, t_stack *stack_a, int size_a, int i);
+int	ft_find_index(t_stack *stack, t_stack *to_find, int size);
+t_stack	*ft_find_biggest(t_stack *stack, int size);
+t_stack	*ft_find_smallest(t_stack *stack, int size);
 void ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 #endif

@@ -53,7 +53,7 @@ void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size)
 		ft_pb(stack_a, stack_b);
 		ft_sort_three(stack_a);
 		ft_rra(stack_a, 1);
-		ft_highest_up(stack_b, ft_lst_count(*stack_b), 0, 0);
+		ft_highest_up(stack_b, ft_lst_count(*stack_b), 0);
 		ft_b_to_a(stack_a, stack_b);
 		while ((*stack_a)->index > 0)
 			ft_rra(stack_a, 1);

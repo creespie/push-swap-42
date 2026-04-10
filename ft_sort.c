@@ -48,7 +48,7 @@ void	ft_right_rotation(t_stack **stack_a, t_stack **stack_b)
 	int	number;
 
 	top_b = *stack_b;
-	number = ft_find_spot_a(top_b, *stack_a, ft_lst_count(*stack_a), 1);
+	number = ft_find_spot_a(top_b, *stack_a, ft_lst_count(*stack_a), 0);
 	while (number > 0)
 	{
 		ft_ra(stack_a, 1);
@@ -100,7 +100,7 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 		best = ft_fastest(*stack_a, *stack_b, ft_lst_count(*stack_a), 0);
 		ft_execute(stack_a, stack_b, best, ft_lst_count(*stack_a));
 	}
-	ft_highest_up(stack_b, ft_lst_count(*stack_b), 0, 0);
+	ft_highest_up(stack_b, ft_lst_count(*stack_b), 0);
 	ft_sort_three(stack_a);
 	ft_b_to_a(stack_a, stack_b);
 	best = *stack_a;
