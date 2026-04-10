@@ -65,4 +65,3 @@ void	ft_execute(t_stack **stack_a, t_stack **stack_b, t_stack *fastest, int size
 		ft_exe_app_spot(stack_b, &spot);
 	ft_pb(stack_a, stack_b);
 }
-
