@@ -52,6 +52,9 @@ int	ft_find_spot_a(t_stack *current, t_stack *stack_a, int size_a, int i);
 int	ft_find_index(t_stack *stack, t_stack *to_find, int size);
 t_stack	*ft_find_biggest(t_stack *stack, int size);
 t_stack	*ft_find_smallest(t_stack *stack, int size);
+int	ft_write_err();
+int	ft_check_errors(int argc, char *argv[]);
+int	ft_array_handling(int argc, char *argv[], int *arr, t_stack **stack_a);
 //void ft_print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 #endif
