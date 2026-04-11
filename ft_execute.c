@@ -18,7 +18,7 @@ void	ft_execute_append_both(t_stack **stack_a, t_stack **stack_b, int *position,
 
 void	ft_exe_app_pos(t_stack **stack_a, int *position)
 {
-	if (position > 0)
+	if (*position > 0)
 	{
 		ft_ra(stack_a, 1);
 		(*position)--;
@@ -32,7 +32,7 @@ void	ft_exe_app_pos(t_stack **stack_a, int *position)
 
 void	ft_exe_app_spot(t_stack **stack_b, int *spot)
 {
-	if (spot > 0)
+	if (*spot > 0)
 	{
 		ft_rb(stack_b, 1);
 		(*spot)--;

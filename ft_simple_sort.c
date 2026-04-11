@@ -57,6 +57,5 @@ void ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size)
 		ft_b_to_a(stack_a, stack_b);
 		while ((*stack_a)->index > 0)
 			ft_rra(stack_a, 1);
-		ft_print_stacks(*stack_a, *stack_b);
 	}
 }

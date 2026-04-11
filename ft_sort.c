@@ -70,7 +70,6 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 	best = *stack_a;
 	while ((*stack_a)->index > 0)
 		ft_rra(stack_a, 1);
-	ft_print_stacks(*stack_a, *stack_b);
 }
 
 /* 
