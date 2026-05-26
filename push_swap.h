@@ -72,5 +72,6 @@ void	ft_sort_three(t_stack **stack_a);
 void	ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size);
 void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b);
+void	ft_ins_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif
