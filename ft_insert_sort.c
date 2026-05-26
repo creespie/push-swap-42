@@ -13,7 +13,11 @@ static void	ft_exec_a(t_stack **stack_a, int *position)
 		(*position)++;
 	}
 }
-
+/*
+** Finds the smallest element in a and pushes it to b until there is
+** only the biggest element left in a. Then pushes everything back
+** into a.
+*/
 void	ft_ins_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	pos;
