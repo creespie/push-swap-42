@@ -1,16 +1,18 @@
 #include "push_swap.h"
 
+/*
+** Returns the signed rotation cost to bring 'current' to the top of stack_a.
+** Positive = rotate forward (ra), negative = reverse rotate (rra).
+*/
 int	ft_position(t_stack *current, t_stack *stack_a, int size)
 {
-	int	i;
 	t_stack	*checking;
+	int		i;
 
 	i = 0;
 	checking = stack_a;
-	checking = checking->prev;
 	while (i < size)
 	{
-		checking = checking->next;
 		if (checking == current)
 		{
 			if (i <= size / 2)
@@ -18,6 +20,7 @@ int	ft_position(t_stack *current, t_stack *stack_a, int size)
 			else
 				return ((size - i) * -1);
 		}
+		checking = checking->next;
 		i++;
 	}
 	return (0);

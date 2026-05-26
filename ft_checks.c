@@ -1,23 +1,9 @@
 #include "push_swap.h"
-
-int	ft_check_order(t_stack *stack, int size)
+#include "libft.h"
+int	ft_write_err(void)
 {
-	int	i;
-	t_stack	*check;
-	
-	check = stack;
-	i = 0;
-	while (i < size)
-	{
-		if (check->index == i)
-		{
-			check = check->next;
-			i++;
-		}
-		else
-			return (0);
-	}
-	return (1);
+	write(2, "Error\n", 6);
+	return (0);
 }
 
 int	ft_check_double(int *arr, int size)
@@ -40,31 +26,50 @@ int	ft_check_double(int *arr, int size)
 	return (1);
 }
 
-int	ft_write_err()
-{
-	write (2, "Error\n", 6);
-	return(0);
-}
-
+/*
+** Validates each argument: only digits (with optional leading sign),
+** and not longer than 10 digits (guards against INT overflow before atoi).
+*/
 int	ft_check_errors(int argc, char *argv[])
 {
 	int	i;
 	int	j;
+	int	len;
 
 	i = 1;
 	while (i < argc)
 	{
 		j = 0;
-		if (argv[i][j] == '-')
+		if (argv[i][j] == '-' || argv[i][j] == '+')
 			j++;
 		if (argv[i][j] == '\0')
-			return(ft_write_err());
+			return (ft_write_err());
+		len = j;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j]) == 0)
+			if (!ft_isdigit(argv[i][j]))
 				return (ft_write_err());
 			j++;
 		}
+		if (j - len > 10)
+			return (ft_write_err());
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check_order(t_stack *stack, int size)
+{
+	t_stack	*check;
+	int		i;
+
+	check = stack;
+	i = 0;
+	while (i < size)
+	{
+		if (check->index != i)
+			return (0);
+		check = check->next;
 		i++;
 	}
 	return (1);
