@@ -1,5 +1,5 @@
 #include "push_swap.h"
-#include "libft.h"
+
 void	ft_sort_arr(int *arr, int size)
 {
 	int	i;
@@ -33,9 +33,9 @@ void	ft_add_order(int *arr, t_stack *stack_a, int size)
 	t_stack	*temp;
 	int		i;
 
-	temp = stack_a;
 	if (!stack_a)
 		return ;
+	temp = stack_a;
 	while (size > 0)
 	{
 		i = 0;
@@ -47,7 +47,7 @@ void	ft_add_order(int *arr, t_stack *stack_a, int size)
 	}
 }
 
-void	ft_convert_stack(int *arr, t_stack **stack_a, int size)
+static void	ft_convert_stack(int *arr, t_stack **stack_a, int size)
 {
 	t_stack	*new;
 	int		i;
@@ -77,10 +77,7 @@ int	ft_array_handling(int argc, char *argv[], int *arr, t_stack **stack_a)
 	while (i < argc - 1)
 	{
 		if (!ft_atoi_safe(argv[i + 1], &arr[i]))
-		{
 			return (ft_write_err());
-		}
-		
 		i++;
 	}
 	if (ft_check_double(arr, argc - 1) == 0)

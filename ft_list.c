@@ -15,8 +15,8 @@ t_stack	*ft_lstnew_ps(int content)
 }
 
 /*
-** Adds node at the back of a NON-circular list.
-** ft_close_circle() must be called after the list is fully built.
+** Appends new node at the back of a non-circular list.
+** Call ft_close_circle() after the list is fully built.
 */
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 {
@@ -57,6 +57,9 @@ int	ft_lst_count(t_stack *stack)
 	return (i);
 }
 
+/*
+** Closes the doubly-linked list into a circle.
+*/
 void	ft_close_circle(t_stack *stack)
 {
 	t_stack	*last;

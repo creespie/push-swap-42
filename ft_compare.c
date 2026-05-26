@@ -13,7 +13,7 @@ static int	ft_cost_same_dir(int pos, int spot)
 
 /*
 ** When rotations go in opposite directions they run sequentially,
-** so costs add up (both are stored as absolute values here after sign flip).
+** so costs add up.
 */
 static int	ft_cost_opp_dir(int pos, int spot)
 {

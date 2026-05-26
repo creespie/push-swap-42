@@ -1,5 +1,8 @@
 #include "push_swap.h"
 
+/*
+** Converts a linear index into a signed rotation cost for stack_a.
+*/
 static int	ft_find_ret_a(int i, int size_a)
 {
 	if (i <= size_a / 2)
@@ -8,6 +11,10 @@ static int	ft_find_ret_a(int i, int size_a)
 		return ((size_a - i) * -1);
 }
 
+/*
+** Returns the signed rotation cost to bring the smallest element of stack_a
+** to the top.
+*/
 int	ft_smallest_a(t_stack *stack_a, int size_a)
 {
 	int	i;

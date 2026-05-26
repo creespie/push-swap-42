@@ -4,6 +4,7 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 
 SRCS	= main.c \
+		  libft.c \
 		  ft_list.c \
 		  ft_checks.c \
 		  ft_array.c \
@@ -19,9 +20,7 @@ SRCS	= main.c \
 		  ft_fastest.c \
 		  ft_execute.c \
 		  ft_free.c \
-		  ft_sort_small.c \
-		  ft_sort_big.c \
-		  libft.c
+		  ft_sort.c
 
 OBJS	= $(SRCS:.c=.o)
 
