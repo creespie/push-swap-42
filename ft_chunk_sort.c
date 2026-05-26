@@ -37,7 +37,7 @@ void	ft_chunk_sort(t_stack **stack_a, t_stack **stack_b)
 	while (size > 0)
 	{
 		i = 0;
-		while (i < chunk)
+		while (i < size)
 		{
 			if ((*stack_a) -> index >= start && (*stack_a) -> index < start + chunk)
 			{	
