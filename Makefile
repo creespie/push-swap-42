@@ -20,6 +20,8 @@ SRCS	= main.c \
 		  ft_fastest.c \
 		  ft_execute.c \
 		  ft_free.c \
+		  ft_insert_sort.c \
+		  ft_chunk_sort.c \
 		  ft_sort.c
 
 OBJS	= $(SRCS:.c=.o)

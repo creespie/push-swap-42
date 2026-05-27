@@ -1,11 +1,19 @@
 #include "push_swap.h"
 
+/*
+** Starts the main sort, choosing sort few for 4 or less arguments
+** or the other selected sorting system, ft_ins_sort() for simple
+** insertion sort, ft_chunk_sort() for medium chunk sort or 
+** ft_sort_everything() for the complex optimized sort. all passed
+** with (stack_a, stack_b) as argument
+*/
+
 static void	ft_main_sort(int argc, t_stack **stack_a, t_stack **stack_b)
 {
 	if (argc - 1 <= 4)
 		ft_sort_few(stack_a, stack_b, argc - 1);
 	else
-		ft_sort_everything(stack_a, stack_b);
+		ft_ins_sort(stack_a, stack_b);
 }
 
 int	main(int argc, char *argv[])
