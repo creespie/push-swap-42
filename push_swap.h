@@ -4,7 +4,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft.h"
-
+# define FLAG_SIMPLE   1
+# define FLAG_MEDIUM   2
+# define FLAG_COMPLEX  3
+# define FLAG_ADAPTIVE 4
 typedef struct s_stack
 {
 	int				content;
