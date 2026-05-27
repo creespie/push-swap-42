@@ -1,11 +1,15 @@
 #include "push_swap.h"
 
-/*
-** Parses the optional strategy flag from argv.
-** Returns the flag index in argv, or -1 if not found.
-** Sets *flag to the corresponding FLAG_* constant.
-** Defaults to FLAG_ADAPTIVE if no flag is given.
-*/
+static int	ft_strcmp_flag(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
 static int	ft_parse_flag(int argc, char *argv[], int *flag)
 {
 	int	i;
@@ -13,20 +17,19 @@ static int	ft_parse_flag(int argc, char *argv[], int *flag)
 	i = 1;
 	while (i < argc)
 	{
-		if (ft_strncmp(argv[i], "--simple", 9) == 0)
+		if (ft_strcmp_flag(argv[i], "--simple") == 0)
 			return (*flag = FLAG_SIMPLE, i);
-		if (ft_strncmp(argv[i], "--medium", 9) == 0)
+		if (ft_strcmp_flag(argv[i], "--medium") == 0)
 			return (*flag = FLAG_MEDIUM, i);
-		if (ft_strncmp(argv[i], "--complex", 10) == 0)
+		if (ft_strcmp_flag(argv[i], "--complex") == 0)
 			return (*flag = FLAG_COMPLEX, i);
-		if (ft_strncmp(argv[i], "--adaptive", 11) == 0)
+		if (ft_strcmp_flag(argv[i], "--adaptive") == 0)
 			return (*flag = FLAG_ADAPTIVE, i);
 		i++;
 	}
 	*flag = FLAG_ADAPTIVE;
 	return (-1);
 }
-
 
 static int	ft_remove_flag(int argc, char *argv[], int flag_idx)
 {
@@ -40,7 +43,6 @@ static int	ft_remove_flag(int argc, char *argv[], int flag_idx)
 	}
 	return (argc - 1);
 }
-
 
 static double	ft_compute_disorder(t_stack *stack_a, int size)
 {
@@ -58,10 +60,11 @@ static double	ft_compute_disorder(t_stack *stack_a, int size)
 		return (0.0);
 	cur = stack_a;
 	i = 0;
-	while (cur)
+	while (i < size)
 	{
-		arr[i++] = cur->index;
+		arr[i] = cur->index;
 		cur = cur->next;
+		i++;
 	}
 	mistakes = 0;
 	total_pairs = 0;
@@ -82,7 +85,6 @@ static double	ft_compute_disorder(t_stack *stack_a, int size)
 	return ((double)mistakes / (double)total_pairs);
 }
 
-
 static void	ft_select_sort(int flag, double disorder,
 				t_stack **stack_a, t_stack **stack_b)
 {
@@ -102,7 +104,6 @@ static void	ft_select_sort(int flag, double disorder,
 			ft_sort_everything(stack_a, stack_b);
 	}
 }
-
 
 static void	ft_main_sort(int argc, int flag, double disorder,
 				t_stack **stack_a, t_stack **stack_b)
