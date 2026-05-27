@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	ft_sqrt(int n)
 {
@@ -61,3 +60,28 @@ void	ft_chunk_sort(t_stack **stack_a, t_stack **stack_b)
 		size--;
 	}
 }
+/*
+void ft_print_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+    t_stack *cur;
+    int     i;
+
+    write(1, "--- STACK A ---\n", 16);
+    cur = stack_a;
+    i = ft_lst_count(stack_a);
+    while (i-- > 0)
+    {
+        printf("%d (idx:%d)\n", cur->content, cur->index);
+        cur = cur->next;
+    }
+    write(1, "--- STACK B ---\n", 16);
+    cur = stack_b;
+    i = ft_lst_count(stack_b);
+    while (i-- > 0)
+    {
+        printf("%d (idx:%d)\n", cur->content, cur->index);
+        cur = cur->next;
+    }
+    write(1, "---------------\n", 16);
+}
+*/
