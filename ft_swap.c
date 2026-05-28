@@ -68,7 +68,7 @@ void	ft_sb(t_stack **stack_b, int flag)
 		write(1, "sb\n", 3);
 }
 
-void	ft_ss(t_stack **stack_a, t_stack **stack_b)
+void	ft_ss(t_stack **stack_a, t_stack **stack_b, int flag)
 {
 	t_bench	*b;
 
@@ -84,6 +84,6 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 			b->ss++;
 		}
 	}
-
-	write(1, "ss\n", 3);
+	if (flag == 1)
+		write(1, "ss\n", 3);
 }

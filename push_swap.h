@@ -85,7 +85,7 @@ void	ft_highest_up(t_stack **stack_b, int size);
 /* operations */
 void	ft_sa(t_stack **stack_a, int flag);
 void	ft_sb(t_stack **stack_b, int flag);
-void	ft_ss(t_stack **stack_a, t_stack **stack_b);
+void	ft_ss(t_stack **stack_a, t_stack **stack_b, int flag);
 void	ft_pa(t_stack **stack_a, t_stack **stack_b);
 void	ft_pb(t_stack **stack_a, t_stack **stack_b);
 void	ft_ra(t_stack **stack_a, int flag);
@@ -95,6 +95,11 @@ void	ft_rra(t_stack **stack_a, int flag);
 void	ft_rrb(t_stack **stack_b, int flag);
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 
+/*helpes for checker*/
+void	ft_cpa(t_stack **stack_a, t_stack **stack_b);
+void	ft_cpb(t_stack **stack_a, t_stack **stack_b);
+void	ft_crr(t_stack **stack_a, t_stack **stack_b);
+void	ft_crrr(t_stack **stack_a, t_stack **stack_b);
 /* sort */
 void	ft_sort_two(t_stack **stack_a);
 void	ft_sort_three(t_stack **stack_a);
