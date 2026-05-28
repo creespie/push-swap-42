@@ -38,27 +38,27 @@ int	main(int argc, char *argv[])
 	while (str != NULL)
 	{
 		if (ft_strcmp(str, "sa\n") == 0)
-			ft_sa(stack_a, 0);
+			ft_sa(&stack_a, 0);
 		else if (ft_strcmp(str, "sb\n") == 0)
-			ft_sb(stack_b, 0);
+			ft_sb(&stack_b, 0);
 		else if (ft_strcmp(str, "ss\n") == 0)
-			ft_ss(stack_a, stack_b, 0);		
+			ft_ss(&stack_a, &stack_b, 0);		
 		else if (ft_strcmp(str, "pa\n") == 0)
-			ft_cpa(stack_a, stack_b);		
+			ft_cpa(&stack_a, &stack_b);		
 		else if (ft_strcmp(str, "pb\n") == 0)
-			ft_cpb(stack_a, stack_b);		
+			ft_cpb(&stack_a, &stack_b);		
 		else if (ft_strcmp(str, "ra\n") == 0)
-			ft_ra(stack_a, 0);		
+			ft_ra(&stack_a, 0);		
 		else if (ft_strcmp(str, "rb\n") == 0)
-			ft_rb(stack_b, 0);
+			ft_rb(&stack_b, 0);
 		else if (ft_strcmp(str, "rr\n") == 0)
-			ft_crr(stack_a, stack_b);
+			ft_crr(&stack_a, &stack_b);
 		else if (ft_strcmp(str, "rra\n") == 0)
-			ft_rra(stack_a, 0);
+			ft_rra(&stack_a, 0);
 		else if (ft_strcmp(str, "rrb\n") == 0)
-			ft_rrb(stack_b, 0);
+			ft_rrb(&stack_b, 0);
 		else if (ft_strcmp(str, "rrr\n") == 0)
-			ft_crrr(stack_a, stack_b);
+			ft_crrr(&stack_a, &stack_b);
 		else
 			{
 				free(str);
