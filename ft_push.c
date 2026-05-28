@@ -20,24 +20,24 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 		*stack_b = NULL;
 	else
 		*stack_b = n_next;
-	n_next = *stack_a;
-if (!*stack_a)  // stack_a è vuota
-{
-    nb->next = nb;
-    nb->prev = nb;
-    *stack_a = nb;
-}
-else
-{
-    n_next = *stack_a;
-    n_prev = n_next->prev;
-    n_next->prev = nb;
-    nb->next = n_next;
-    n_prev->next = nb;
-    nb->prev = n_prev;
-    *stack_a = nb;
-}
+	if (!*stack_a)
+	{
+		nb->next = nb;
+		nb->prev = nb;
+		*stack_a = nb;
+	}
+	else
+	{
+		n_next = *stack_a;
+		n_prev = n_next->prev;
+		n_next->prev = nb;
+		nb->next = n_next;
+		n_prev->next = nb;
+		nb->prev = n_prev;
+		*stack_a = nb;
+	}
 	write(1, "pa\n", 3);
+	ft_bench_update(*stack_a, OP_PA);
 }
 
 /*
@@ -77,4 +77,5 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 		*stack_b = na;
 	}
 	write(1, "pb\n", 3);
+	ft_bench_update(*stack_b, OP_PB);
 }

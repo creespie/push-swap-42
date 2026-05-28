@@ -8,12 +8,40 @@
 # define FLAG_MEDIUM   2
 # define FLAG_COMPLEX  3
 # define FLAG_ADAPTIVE 4
+typedef struct s_bench
+{
+	double	disorder;
+
+	int		strategy;
+
+	int		total_ops;
+
+	int		sa;
+	int		sb;
+	int		ss;
+
+	int		pa;
+	int		pb;
+
+	int		ra;
+	int		rb;
+	int		rr;
+
+	int		rra;
+	int		rrb;
+	int		rrr;
+
+	int		enabled;
+}	t_bench;
+
 typedef struct s_stack
 {
 	int				content;
 	int				index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
+	t_bench *bench;
+
 }	t_stack;
 
 /* list utils */
@@ -75,5 +103,19 @@ void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b);
 void	ft_chunk_sort(t_stack **stack_a, t_stack **stack_b);
 void	ft_ins_sort(t_stack **stack_a, t_stack **stack_b);
+enum e_op {
+	OP_SA,
+	OP_SB,
+	OP_SS,
+	OP_PA,
+	OP_PB,
+	OP_RA,
+	OP_RB,
+	OP_RR,
+	OP_RRA,
+	OP_RRB,
+	OP_RRR
+};
+void	ft_bench_update(t_stack *stack, enum e_op op);
 
 #endif
