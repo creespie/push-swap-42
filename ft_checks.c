@@ -3,7 +3,7 @@
 int	ft_write_err(void)
 {
 	write(2, "Error\n", 6);
-	return (0);
+	return (EXIT_FAILURE);
 }
 
 int	ft_check_double(int *arr, int size)
