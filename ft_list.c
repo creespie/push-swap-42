@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_list.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_stack	*ft_lstnew_ps(int content)
@@ -14,10 +26,6 @@ t_stack	*ft_lstnew_ps(int content)
 	return (new);
 }
 
-/*
-** Appends new node at the back of a non-circular list.
-** Call ft_close_circle() after the list is fully built.
-*/
 void	ft_lstadd_back_ps(t_stack **lst, t_stack *new)
 {
 	t_stack	*temp;
@@ -37,9 +45,6 @@ t_stack	*ft_lstlast_ps(t_stack *lst)
 	return (lst);
 }
 
-/*
-** Counts nodes in a circular doubly-linked list.
-*/
 int	ft_lst_count(t_stack *stack)
 {
 	t_stack	*first;
@@ -57,9 +62,6 @@ int	ft_lst_count(t_stack *stack)
 	return (i);
 }
 
-/*
-** Closes the doubly-linked list into a circle.
-*/
 void	ft_close_circle(t_stack *stack)
 {
 	t_stack	*last;

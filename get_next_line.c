@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lurossi <lurossi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 15:00:21 by lurossi           #+#    #+#             */
-/*   Updated: 2026/05/22 16:22:38 by lurossi          ###   ########.fr       */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h" 
+#include "get_next_line.h"
 
 static int	ft_use_read(char **stash, char *temp, char *buf, int fd)
 {

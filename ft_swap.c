@@ -1,62 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
+static void	ft_swap_values(t_stack *a, t_stack *b)
+{
+	int	tmp;
+
+	tmp = a->content;
+	a->content = b->content;
+	b->content = tmp;
+	tmp = a->index;
+	a->index = b->index;
+	b->index = tmp;
+}
 
 void	ft_sa(t_stack **stack_a, int flag)
 {
-	t_stack	*n1;
-	t_stack	*n2;
-	int		tmp;
-	if (!stack_a || !*stack_a || !(*stack_a)->next)
-		return;
-
-	n1 = *stack_a;
-	n2 = n1->next;
-
-	tmp = n1->content;
-	n1->content = n2->content;
-	n2->content = tmp;
-
-	tmp = n1->index;
-	n1->index = n2->index;
-	n2->index = tmp;
-
+	if (!stack_a || !*stack_a || (*stack_a)->next == *stack_a)
+		return ;
+	ft_swap_values(*stack_a, (*stack_a)->next);
 	if (flag == 1)
 		write(1, "sa\n", 3);
-	ft_bench_update(*stack_a,OP_SA);
+	if (flag == 1)
+		ft_bench_update(*stack_a, OP_SA);
 }
 
 void	ft_sb(t_stack **stack_b, int flag)
 {
-	t_stack	*n1;
-	t_stack	*n2;
-	int		tmp;
-	if (!stack_b || !*stack_b || !(*stack_b)->next)
-		return;
-
-	n1 = *stack_b;
-	n2 = n1->next;
-
-	tmp = n1->content;
-	n1->content = n2->content;
-	n2->content = tmp;
-
-	tmp = n1->index;
-	n1->index = n2->index;
-	n2->index = tmp;
-
+	if (!stack_b || !*stack_b || (*stack_b)->next == *stack_b)
+		return ;
+	ft_swap_values(*stack_b, (*stack_b)->next);
 	if (flag == 1)
 		write(1, "sb\n", 3);
-	ft_bench_update(*stack_b,OP_SB);
+	if (flag == 1)
+		ft_bench_update(*stack_b, OP_SB);
 }
 
 void	ft_ss(t_stack **stack_a, t_stack **stack_b, int flag)
 {
-
 	ft_sa(stack_a, 0);
 	ft_sb(stack_b, 0);
-
-
 	if (flag == 1)
 		write(1, "ss\n", 3);
-	ft_bench_update(*stack_a,OP_SS);
+	if (stack_a && *stack_a)
+		ft_bench_update(*stack_a, OP_SS);
+	else if (stack_b && *stack_b)
+		ft_bench_update(*stack_b, OP_SS);
 }

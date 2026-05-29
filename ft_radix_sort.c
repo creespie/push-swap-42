@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   ft_radix_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,35 +12,49 @@
 
 #include "push_swap.h"
 
-void	ft_rra(t_stack **stack_a, int flag)
+static int	ft_max_bits(int size)
 {
-	if (!stack_a || !*stack_a)
-		return ;
-	*stack_a = (*stack_a)->prev;
-	if (flag == 1)
-		write(1, "rra\n", 4);
-	if (flag == 1)
-		ft_bench_update(*stack_a, OP_RRA);
+	int	bits;
+	int	max;
+
+	bits = 0;
+	max = size - 1;
+	while (max > 0)
+	{
+		bits++;
+		max >>= 1;
+	}
+	return (bits);
 }
 
-void	ft_rrb(t_stack **stack_b, int flag)
+static void	ft_push_back_all(t_stack **stack_a, t_stack **stack_b)
 {
-	if (!stack_b || !*stack_b)
-		return ;
-	*stack_b = (*stack_b)->prev;
-	if (flag == 1)
-		write(1, "rrb\n", 4);
-	if (flag == 1)
-		ft_bench_update(*stack_b, OP_RRB);
+	while (*stack_b)
+		ft_pa(stack_a, stack_b);
 }
 
-void	ft_rrr(t_stack **stack_a, t_stack **stack_b)
+void	ft_radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_rra(stack_a, 0);
-	ft_rrb(stack_b, 0);
-	write(1, "rrr\n", 4);
-	if (stack_a && *stack_a)
-		ft_bench_update(*stack_a, OP_RRR);
-	else if (stack_b && *stack_b)
-		ft_bench_update(*stack_b, OP_RRR);
+	int	bits;
+	int	bit;
+	int	size;
+	int	i;
+
+	size = ft_lst_count(*stack_a);
+	bits = ft_max_bits(size);
+	bit = 0;
+	while (bit < bits)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (((*stack_a)->index >> bit) & 1)
+				ft_ra(stack_a, 1);
+			else
+				ft_pb(stack_a, stack_b);
+			i++;
+		}
+		ft_push_back_all(stack_a, stack_b);
+		bit++;
+	}
 }

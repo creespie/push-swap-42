@@ -1,9 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_compare.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-/*
-** When both rotations go the same direction they run simultaneously,
-** so the total cost is the larger of the two.
-*/
 static int	ft_cost_same_dir(int pos, int spot)
 {
 	if ((pos > spot && pos > 0) || (pos < spot && pos < 0))
@@ -11,10 +19,6 @@ static int	ft_cost_same_dir(int pos, int spot)
 	return (spot);
 }
 
-/*
-** When rotations go in opposite directions they run sequentially,
-** so costs add up.
-*/
 static int	ft_cost_opp_dir(int pos, int spot)
 {
 	if (pos < 0)
@@ -31,9 +35,6 @@ static int	ft_abs(int n)
 	return (n);
 }
 
-/*
-** Returns 1 if candidate 2 (pos_2, spot_2) is cheaper than candidate 1.
-*/
 int	ft_compare(int pos, int spot, int pos_2, int spot_2)
 {
 	int	total;

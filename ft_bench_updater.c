@@ -1,30 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bench_updater.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-void	ft_bench_update(t_stack *stack, enum e_op op)
+static void	ft_update_swap(t_bench *b, t_op op)
 {
-	t_bench	*b;
-
-	if (!stack)
-		return;
-
-	b = stack->bench;
-	if (!b || !b->enabled)
-		return;
-
-	b->total_ops++;
-
 	if (op == OP_SA)
 		b->sa++;
 	else if (op == OP_SB)
 		b->sb++;
 	else if (op == OP_SS)
 		b->ss++;
-	else if (op == OP_PA)
+}
+
+static void	ft_update_push(t_bench *b, t_op op)
+{
+	if (op == OP_PA)
 		b->pa++;
 	else if (op == OP_PB)
 		b->pb++;
-	else if (op == OP_RA)
+}
+
+static void	ft_update_rotate(t_bench *b, t_op op)
+{
+	if (op == OP_RA)
 		b->ra++;
 	else if (op == OP_RB)
 		b->rb++;
@@ -36,4 +44,19 @@ void	ft_bench_update(t_stack *stack, enum e_op op)
 		b->rrb++;
 	else if (op == OP_RRR)
 		b->rrr++;
+}
+
+void	ft_bench_update(t_stack *stack, t_op op)
+{
+	t_bench	*b;
+
+	if (!stack)
+		return ;
+	b = stack->bench;
+	if (!b || !b->enabled)
+		return ;
+	b->total_ops++;
+	ft_update_swap(b, op);
+	ft_update_push(b, op);
+	ft_update_rotate(b, op);
 }

@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find_spot_b.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-/*
-** Converts a linear index into a signed rotation cost for stack_b.
-*/
 static int	ft_find_ret_b(int i, int size_b)
 {
 	if (i <= size_b / 2)
@@ -11,10 +20,6 @@ static int	ft_find_ret_b(int i, int size_b)
 		return ((size_b - i) * -1);
 }
 
-/*
-** Returns the signed rotation cost to bring the biggest element of stack_b
-** to the top (used when current must land above/below all elements).
-*/
 int	ft_smallest_b(t_stack *stack_b, int size_b)
 {
 	int	i;
@@ -23,11 +28,6 @@ int	ft_smallest_b(t_stack *stack_b, int size_b)
 	return (ft_find_ret_b(i, size_b));
 }
 
-/*
-** Finds where 'current' (from stack_a) should be inserted in stack_b.
-** stack_b is kept in DESCENDING order.
-** Returns signed rotation cost (0 = already at correct position on top).
-*/
 int	ft_find_spot(t_stack *current, t_stack *stack_b, int size_b)
 {
 	t_stack	*n1;

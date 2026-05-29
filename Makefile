@@ -6,6 +6,11 @@ CFLAGS	= -Wall -Wextra -Werror
 
 SRCS	= main.c \
 		  libft.c \
+		  libft_printf.c \
+		  ft_flags.c \
+		  ft_main_utils.c \
+		  ft_bench_print.c \
+		  ft_bench_write.c \
 		  ft_list.c \
 		  ft_checks.c \
 		  ft_array.c \
@@ -24,10 +29,18 @@ SRCS	= main.c \
 		  ft_insert_sort.c \
 		  ft_chunk_sort.c \
 		  ft_bench_updater.c \
-		  ft_sort.c
+		  ft_sort.c \
+		  ft_sort_two.c \
+		  ft_sort_big.c \
+		  ft_radix_sort.c
 
 BONUS_SRCS = checker.c \
 			libft.c \
+			libft_printf.c \
+			ft_flags.c \
+			ft_main_utils.c \
+			ft_bench_print.c \
+			ft_bench_write.c \
 			ft_list.c \
 			ft_checks.c \
 			ft_array.c \
@@ -47,7 +60,12 @@ BONUS_SRCS = checker.c \
 			ft_chunk_sort.c \
 			ft_bench_updater.c \
 			ft_sort.c \
+			ft_sort_two.c \
+			ft_sort_big.c \
+		  ft_radix_sort.c \
 			checker_helpers.c \
+			checker_rotate.c \
+			checker_utils.c \
 			get_next_line.c \
 			get_next_line_utils.c
 

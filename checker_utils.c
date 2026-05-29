@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,35 +12,31 @@
 
 #include "push_swap.h"
 
-void	ft_rra(t_stack **stack_a, int flag)
+int	ft_checker_strcmp(const char *s1, const char *s2)
 {
-	if (!stack_a || !*stack_a)
-		return ;
-	*stack_a = (*stack_a)->prev;
-	if (flag == 1)
-		write(1, "rra\n", 4);
-	if (flag == 1)
-		ft_bench_update(*stack_a, OP_RRA);
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }
 
-void	ft_rrb(t_stack **stack_b, int flag)
+int	ft_checker_init(int argc, char *argv[], t_stack **stack_a)
 {
-	if (!stack_b || !*stack_b)
-		return ;
-	*stack_b = (*stack_b)->prev;
-	if (flag == 1)
-		write(1, "rrb\n", 4);
-	if (flag == 1)
-		ft_bench_update(*stack_b, OP_RRB);
-}
+	int	*arr;
 
-void	ft_rrr(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_rra(stack_a, 0);
-	ft_rrb(stack_b, 0);
-	write(1, "rrr\n", 4);
-	if (stack_a && *stack_a)
-		ft_bench_update(*stack_a, OP_RRR);
-	else if (stack_b && *stack_b)
-		ft_bench_update(*stack_b, OP_RRR);
+	if (!ft_check_errors(argc, argv))
+		return (0);
+	arr = malloc(sizeof(int) * (argc - 1));
+	if (!arr)
+		return (0);
+	if (!ft_array_handling(argc, argv, arr, stack_a))
+		return (free(arr), 0);
+	free(arr);
+	return (1);
 }

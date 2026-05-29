@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_insert_sort.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	ft_exec_a(t_stack **stack_a, int *position)
@@ -13,11 +25,7 @@ static void	ft_exec_a(t_stack **stack_a, int *position)
 		(*position)++;
 	}
 }
-/*
-** Finds the smallest element in a and pushes it to b until there is
-** only the biggest element left in a. Then pushes everything back
-** into a.
-*/
+
 void	ft_ins_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int	pos;

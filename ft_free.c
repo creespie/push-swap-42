@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_free_stack(t_stack **stack, int size)
@@ -20,10 +32,6 @@ void	ft_free_stack(t_stack **stack, int size)
 	*stack = NULL;
 }
 
-/*
-** Brings the biggest element of stack_b to the top using
-** the shortest rotation direction.
-*/
 void	ft_highest_up(t_stack **stack_b, int size)
 {
 	int	i;

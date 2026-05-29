@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_checks.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
+/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_write_err(void)
 {
 	write(2, "Error\n", 6);
-	return (EXIT_FAILURE);
+	return (0);
 }
 
 int	ft_check_double(int *arr, int size)
@@ -26,10 +38,6 @@ int	ft_check_double(int *arr, int size)
 	return (1);
 }
 
-/*
-** Validates each argument: only digits with optional leading sign,
-** and not longer than 10 digits (guards against overflow before atoi).
-*/
 int	ft_check_errors(int argc, char *argv[])
 {
 	int	i;
@@ -58,9 +66,6 @@ int	ft_check_errors(int argc, char *argv[])
 	return (1);
 }
 
-/*
-** Returns 1 if stack is already sorted in ascending order by index.
-*/
 int	ft_check_order(t_stack *stack, int size)
 {
 	t_stack	*check;

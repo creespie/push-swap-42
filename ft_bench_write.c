@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   ft_bench_write.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,35 +12,53 @@
 
 #include "push_swap.h"
 
-void	ft_rra(t_stack **stack_a, int flag)
+void	ft_write_str(const char *s)
 {
-	if (!stack_a || !*stack_a)
-		return ;
-	*stack_a = (*stack_a)->prev;
-	if (flag == 1)
-		write(1, "rra\n", 4);
-	if (flag == 1)
-		ft_bench_update(*stack_a, OP_RRA);
+	while (*s)
+	{
+		write(2, s, 1);
+		s++;
+	}
 }
 
-void	ft_rrb(t_stack **stack_b, int flag)
+void	ft_write_int(int n)
 {
-	if (!stack_b || !*stack_b)
-		return ;
-	*stack_b = (*stack_b)->prev;
-	if (flag == 1)
-		write(1, "rrb\n", 4);
-	if (flag == 1)
-		ft_bench_update(*stack_b, OP_RRB);
+	char	buf[12];
+	int		i;
+	int		neg;
+
+	i = 11;
+	buf[i] = '\0';
+	neg = 0;
+	if (n < 0)
+	{
+		neg = 1;
+		n = -n;
+	}
+	if (n == 0)
+		buf[--i] = '0';
+	while (n > 0)
+	{
+		buf[--i] = '0' + (n % 10);
+		n /= 10;
+	}
+	if (neg)
+		buf[--i] = '-';
+	write(2, buf + i, 11 - i);
 }
 
-void	ft_rrr(t_stack **stack_a, t_stack **stack_b)
+void	ft_write_percent(double d)
 {
-	ft_rra(stack_a, 0);
-	ft_rrb(stack_b, 0);
-	write(1, "rrr\n", 4);
-	if (stack_a && *stack_a)
-		ft_bench_update(*stack_a, OP_RRR);
-	else if (stack_b && *stack_b)
-		ft_bench_update(*stack_b, OP_RRR);
+	int	integer_part;
+	int	decimal_part;
+
+	integer_part = (int)(d * 100.0);
+	decimal_part = (int)(d * 10000.0) % 100;
+	if (decimal_part < 0)
+		decimal_part = -decimal_part;
+	ft_write_int(integer_part);
+	write(2, ".", 1);
+	if (decimal_part < 10)
+		write(2, "0", 1);
+	ft_write_int(decimal_part);
 }
