@@ -77,14 +77,14 @@ void	ft_link_bench(t_stack *a, int size, t_bench *bench)
 
 void	ft_main_sort(t_app *app)
 {
-	if (app->argc - 1 <= 4)
-		ft_sort_few(&app->a, &app->b, app->argc - 1);
-	else if (app->strategy == FLAG_SIMPLE)
+	if (app->strategy == FLAG_SIMPLE)
 		ft_ins_sort(&app->a, &app->b);
 	else if (app->strategy == FLAG_MEDIUM)
 		ft_chunk_sort(&app->a, &app->b);
 	else if (app->strategy == FLAG_COMPLEX)
 		ft_radix_sort(&app->a, &app->b);
+	else if (app->argc - 1 <= 4)
+		ft_sort_few(&app->a, &app->b, app->argc - 1);
 	else if (app->disorder < 0.2)
 		ft_ins_sort(&app->a, &app->b);
 	else if (app->disorder < 0.5)
