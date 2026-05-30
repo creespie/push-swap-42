@@ -90,5 +90,5 @@ void	ft_main_sort(t_app *app)
 	else if (app->disorder < 0.5)
 		ft_chunk_sort(&app->a, &app->b);
 	else
-		ft_radix_sort(&app->a, &app->b);
+		ft_sort_everything(&app->a, &app->b);
 }
