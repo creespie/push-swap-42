@@ -82,7 +82,7 @@ void	ft_main_sort(t_app *app)
 	else if (app->strategy == FLAG_MEDIUM)
 		ft_chunk_sort(&app->a, &app->b);
 	else if (app->strategy == FLAG_COMPLEX)
-		ft_radix_sort(&app->a, &app->b);
+		ft_sort_everything(&app->a, &app->b);
 	else if (app->argc - 1 <= 4)
 		ft_sort_few(&app->a, &app->b, app->argc - 1);
 	else if (app->disorder < 0.2)
