@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by lmezzaba.*
+*This project has been created as part of the 42 curriculum by lmezzaba and lurossi
 
 # push_swap
 
