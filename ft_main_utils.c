@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmezzaba <mezzabarba.lorenzo@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/31 12:08:25 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ void	ft_main_sort(t_app *app)
 		ft_chunk_sort(&app->a, &app->b);
 	else if (app->strategy == FLAG_COMPLEX)
 		ft_sort_everything(&app->a, &app->b);
-	else if (app->argc - 1 <= 4)
-		ft_sort_few(&app->a, &app->b, app->argc - 1);
 	else if (app->disorder < 0.2)
 		ft_ins_sort(&app->a, &app->b);
 	else if (app->disorder < 0.5)

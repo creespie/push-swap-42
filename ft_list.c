@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmezzaba <mezzabarba.lorenzo@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/05/31 12:20:38 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_stack	*ft_lstnew_ps(int content)
 	new->index = -1;
 	new->next = NULL;
 	new->prev = NULL;
+	new->bench = NULL;
 	return (new);
 }
 
