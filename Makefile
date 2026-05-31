@@ -32,7 +32,6 @@ SRCS	= main.c \
 		  ft_sort.c \
 		  ft_sort_two.c \
 		  ft_sort_big.c \
-		  ft_radix_sort.c
 
 BONUS_SRCS = checker.c \
 			libft.c \
@@ -62,7 +61,6 @@ BONUS_SRCS = checker.c \
 			ft_sort.c \
 			ft_sort_two.c \
 			ft_sort_big.c \
-		  ft_radix_sort.c \
 			checker_helpers.c \
 			checker_rotate.c \
 			checker_utils.c \

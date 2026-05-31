@@ -71,6 +71,8 @@ int	ft_check_order(t_stack *stack, int size)
 	t_stack	*check;
 	int		i;
 
+	if (!stack)
+		return (size <= 0);
 	check = stack;
 	i = 0;
 	while (i < size)

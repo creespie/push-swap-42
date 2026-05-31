@@ -57,18 +57,24 @@ static int	ft_convert_stack(int *arr, t_stack **stack_a, int size)
 {
 	t_stack	*new;
 	int		i;
+	int		created;
 
 	i = 0;
+	created = 0;
 	while (size > 0)
 	{
 		new = ft_lstnew_ps(arr[i]);
 		if (!new)
+		{
+			ft_free_stack(stack_a, created);
 			return (0);
+		}
 		if (*stack_a == NULL)
 			*stack_a = new;
 		else
 			ft_lstadd_back_ps(stack_a, new);
 		i++;
+		created++;
 		size--;
 	}
 	ft_close_circle(*stack_a);
@@ -105,7 +111,10 @@ int	ft_array_handling(int argc, char *argv[], int *arr, t_stack **stack_a)
 		return (0);
 	sorted = malloc((argc - 1) * sizeof(int));
 	if (!sorted)
+	{
+		ft_free_stack(stack_a, argc - 1);
 		return (0);
+	}
 	ft_copy_array(sorted, arr, argc - 1);
 	ft_sort_arr(sorted, argc - 1);
 	ft_add_order(sorted, *stack_a, argc - 1);

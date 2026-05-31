@@ -81,7 +81,12 @@ int	main(int argc, char *argv[])
 	if (!ft_checker_init(argc, argv, &stack_a))
 		return (1);
 	if (!ft_read_ops(&stack_a, &stack_b))
+	{
+		ft_free_stack(&stack_a, ft_lst_count(stack_a));
+		if (stack_b)
+			ft_free_stack(&stack_b, ft_lst_count(stack_b));
 		return (1);
+	}
 	if (ft_check_order(stack_a, argc - 1) == 1 && !stack_b)
 		write(1, "OK\n", 3);
 	else
