@@ -83,7 +83,7 @@ void	ft_flag_checker(char *flag, int *strategy, int *numbers_flags)
 int	ft_parse_helper(t_bench *bench, char *str, int *numbers_flags, int *strategy)
 {
 	if (ft_strcmp_flag(str, "--bench") == 0)
-		if (bench->enabled == 1 || *numbers_flags)
+		if (bench->enabled == 1)
 			return(-1);
 		else
 		{

@@ -59,18 +59,23 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*best;
 
-	ft_pb(stack_a, stack_b);
-	ft_pb(stack_a, stack_b);
-	if ((*stack_b)->index < (*stack_b)->next->index)
-		ft_rb(stack_b, 1);
-	while (ft_lst_count(*stack_a) > 3)
+	if (ft_lst_count(*stack_a) >= 5)
 	{
-		best = ft_fastest(*stack_a, *stack_b, ft_lst_count(*stack_a));
-		ft_execute(stack_a, stack_b, best, ft_lst_count(*stack_a));
+		ft_pb(stack_a, stack_b);
+		ft_pb(stack_a, stack_b);
+		if ((*stack_b)->index < (*stack_b)->next->index)
+			ft_rb(stack_b, 1);
+		while (ft_lst_count(*stack_a) > 3)
+		{
+			best = ft_fastest(*stack_a, *stack_b, ft_lst_count(*stack_a));
+			ft_execute(stack_a, stack_b, best, ft_lst_count(*stack_a));
+		}
+		ft_sort_three(stack_a);
+		ft_highest_up(stack_b, ft_lst_count(*stack_b));
+		ft_b_to_a(stack_a, stack_b);
+		while ((*stack_a)->index != 0)
+			ft_rra(stack_a, 1);
 	}
-	ft_sort_three(stack_a);
-	ft_highest_up(stack_b, ft_lst_count(*stack_b));
-	ft_b_to_a(stack_a, stack_b);
-	while ((*stack_a)->index != 0)
-		ft_rra(stack_a, 1);
+	else
+		ft_sort_few(stack_a, stack_b, ft_lst_count(*stack_a));
 }
