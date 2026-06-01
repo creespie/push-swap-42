@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <limits.h>
-# include <stdlib.h>
 # include <unistd.h>
-# include <stdarg.h>
+# include <stdlib.h>
 
-int		ft_isdigit(int c);
-int		ft_atoi_safe(const char *str, int *out);
-void	*ft_memset(void *s, int c, size_t n);
-int		ft_dprintf(int fd, const char *format, ...);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+ssize_t	read(int fd, void *buf, size_t count);
+char	*get_next_line(int fd);
+char	*ft_strconcat(char *stash, char *buf, int bytes);
+char	*ft_strisolate(char *stash, int start, int len);
+int		check_first_n(char *string);
+int		ft_strlen(char *string);
 
 #endif

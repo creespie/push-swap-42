@@ -101,8 +101,6 @@ t_stack	*ft_find_smallest(t_stack *stack, int size);
 int		ft_position(t_stack *current, t_stack *stack_a, int size);
 int		ft_find_spot(t_stack *current, t_stack *stack_b, int size_b);
 int		ft_find_spot_a(t_stack *current, t_stack *stack_a, int size_a);
-int		ft_smallest_b(t_stack *stack_b, int size_b);
-int		ft_smallest_a(t_stack *stack_a, int size_a);
 int		ft_compare(int pos, int spot, int pos_2, int spot_2);
 t_stack	*ft_fastest(t_stack *stack_a, t_stack *stack_b, int size);
 void	ft_execute(t_stack **stack_a, t_stack **stack_b,
@@ -127,7 +125,6 @@ void	ft_crrr(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_two(t_stack **stack_a);
 void	ft_sort_three(t_stack **stack_a);
 void	ft_sort_few(t_stack **stack_a, t_stack **stack_b, int size);
-void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b);
 void	ft_chunk_sort(t_stack **stack_a, t_stack **stack_b);
 void	ft_ins_sort(t_stack **stack_a, t_stack **stack_b);

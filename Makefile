@@ -2,73 +2,50 @@ NAME	= push_swap
 BONUS	= checker
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -Iincludes
 
-SRCS	= main.c \
-		  libft.c \
-		  libft_printf.c \
-		  ft_flags.c \
-		  ft_main_utils.c \
-		  ft_bench_print.c \
-		  ft_bench_write.c \
-		  ft_list.c \
-		  ft_checks.c \
-		  ft_array.c \
-		  ft_swap.c \
-		  ft_push.c \
-		  ft_rotate.c \
-		  ft_reverse_rotate.c \
-		  ft_find.c \
-		  ft_position.c \
-		  ft_find_spot_b.c \
-		  ft_find_spot_a.c \
-		  ft_compare.c \
-		  ft_fastest.c \
-		  ft_execute.c \
-		  ft_free.c \
-		  ft_insert_sort.c \
-		  ft_chunk_sort.c \
-		  ft_bench_updater.c \
-		  ft_sort.c \
-		  ft_sort_two.c \
-		  ft_sort_big.c \
+LIBFT_SRCS = libft/libft.c \
+			 libft/libft_printf.c
 
-BONUS_SRCS = checker.c \
-			libft.c \
-			libft_printf.c \
-			ft_flags.c \
-			ft_main_utils.c \
-			ft_bench_print.c \
-			ft_bench_write.c \
-			ft_list.c \
-			ft_checks.c \
-			ft_array.c \
-			ft_swap.c \
-			ft_push.c \
-			ft_rotate.c \
-			ft_reverse_rotate.c \
-			ft_find.c \
-			ft_position.c \
-			ft_find_spot_b.c \
-			ft_find_spot_a.c \
-			ft_compare.c \
-			ft_fastest.c \
-			ft_execute.c \
-			ft_free.c \
-			ft_insert_sort.c \
-			ft_chunk_sort.c \
-			ft_bench_updater.c \
-			ft_sort.c \
-			ft_sort_two.c \
-			ft_sort_big.c \
-			checker_helpers.c \
-			checker_rotate.c \
-			checker_utils.c \
-			get_next_line.c \
-			get_next_line_utils.c
+COMMON_SRCS = $(LIBFT_SRCS) \
+			  src/init/ft_flags.c \
+			  src/init/ft_main_utils.c \
+			  src/init/ft_array.c \
+			  src/checks/ft_checks.c \
+			  src/stack/ft_list.c \
+			  src/stack/ft_find.c \
+			  src/stack/ft_position.c \
+			  src/stack/ft_free.c \
+			  src/operations/ft_swap.c \
+			  src/operations/ft_push.c \
+			  src/operations/ft_rotate.c \
+			  src/operations/ft_reverse_rotate.c \
+			  src/sort/ft_find_spot_b.c \
+			  src/sort/ft_find_spot_a.c \
+			  src/sort/ft_compare.c \
+			  src/sort/ft_fastest.c \
+			  src/sort/ft_execute.c \
+			  src/sort/ft_insert_sort.c \
+			  src/sort/ft_chunk_sort.c \
+			  src/sort/ft_sort.c \
+			  src/sort/ft_sort_two.c \
+			  src/sort/ft_sort_big.c \
+			  src/bench/ft_bench_print.c \
+			  src/bench/ft_bench_write.c \
+			  src/bench/ft_bench_updater.c
 
-OBJS	= $(SRCS:.c=.o)
-BONUS_OBJS  = $(BONUS_SRCS:.c=.bo)
+SRCS = src/main.c $(COMMON_SRCS)
+
+BONUS_SRCS = src/checker/checker.c \
+			 $(COMMON_SRCS) \
+			 src/checker/checker_helpers.c \
+			 src/checker/checker_rotate.c \
+			 src/checker/checker_utils.c \
+			 src/gnl/get_next_line.c \
+			 src/gnl/get_next_line_utils.c
+
+OBJS		= $(SRCS:.c=.o)
+BONUS_OBJS	= $(BONUS_SRCS:.c=.bo)
 
 all: $(NAME)
 
@@ -80,10 +57,10 @@ bonus: $(BONUS)
 $(BONUS): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUS)
 
-%.o: %.c push_swap.h libft.h
+%.o: %.c includes/push_swap.h includes/libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-%.bo: %.c push_swap.h libft.h get_next_line.h
+%.bo: %.c includes/push_swap.h includes/libft.h includes/get_next_line.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

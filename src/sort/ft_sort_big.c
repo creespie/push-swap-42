@@ -30,7 +30,7 @@ static void	ft_right_rotation(t_stack **stack_a, t_stack **stack_b)
 	ft_pa(stack_a, stack_b);
 }
 
-void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
+static void	ft_b_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*top_b;
 	t_stack	*top_a;

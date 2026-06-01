@@ -20,7 +20,7 @@ static int	ft_find_ret_a(int i, int size_a)
 		return ((size_a - i) * -1);
 }
 
-int	ft_smallest_a(t_stack *stack_a, int size_a)
+static int	ft_smallest_a(t_stack *stack_a, int size_a)
 {
 	int	i;
 
