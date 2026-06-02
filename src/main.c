@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include "libft.h"
 
-static int	ft_prepare_stack(int argc, char *argv[], t_app *app)
+int	ft_prepare_stack(int argc, char *argv[], t_app *app)
 {
 	char	**nums;
 	int		num_argc;
@@ -37,7 +37,7 @@ static int	ft_prepare_stack(int argc, char *argv[], t_app *app)
 	return (1);
 }
 
-static int	ft_init_app(int argc, char *argv[], t_app *app)
+int	ft_init_app(int argc, char *argv[], t_app *app)
 {
 	ft_memset(app, 0, sizeof(t_app));
 	if (ft_parse_flags(argc, argv, &app->strategy, &app->bench) == -1)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 #include "get_next_line.h"
 
 static int	ft_exec_line(char *str, t_stack **stack_a, t_stack **stack_b)
@@ -71,28 +71,25 @@ static int	ft_read_ops(t_stack **stack_a, t_stack **stack_b)
 
 int	main(int argc, char *argv[])
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_app	app;
 
 	if (argc <= 1)
 		return (0);
-	stack_a = NULL;
-	stack_b = NULL;
-	if (!ft_checker_init(argc, argv, &stack_a))
-		return (1);
-	if (!ft_read_ops(&stack_a, &stack_b))
+	if (!ft_init_app(argc, argv, &app))
+		return (0);
+	if (!ft_read_ops(&app.a, &app.b))
 	{
-		ft_free_stack(&stack_a, ft_lst_count(stack_a));
-		if (stack_b)
-			ft_free_stack(&stack_b, ft_lst_count(stack_b));
+		ft_free_stack(&app.a, ft_lst_count(app.a));
+		if (app.b)
+			ft_free_stack(&app.b, ft_lst_count(app.b));
 		return (1);
 	}
-	if (ft_check_order(stack_a, argc - 1) == 1 && !stack_b)
+	if (ft_check_order(app.a, argc - 1) == 1 && !app.b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	ft_free_stack(&stack_a, ft_lst_count(stack_a));
-	if (stack_b)
-		ft_free_stack(&stack_b, ft_lst_count(stack_b));
+	ft_free_stack(&app.a, ft_lst_count(app.a));
+	if (app.b)
+		ft_free_stack(&app.b, ft_lst_count(app.b));
 	return (0);
 }

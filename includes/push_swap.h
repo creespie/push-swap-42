@@ -148,5 +148,7 @@ void	ft_write_str(const char *s);
 void	ft_write_int(int n);
 void	ft_write_percent(double d);
 void	ft_print_bench(t_bench *b);
+int	ft_init_app(int argc, char *argv[], t_app *app);
+int	ft_prepare_stack(int argc, char *argv[], t_app *app);
 
 #endif
