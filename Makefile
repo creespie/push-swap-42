@@ -4,10 +4,13 @@ BONUS	= checker
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror -Iincludes
 
-LIBFT_SRCS = libft/libft.c \
-			 libft/libft_printf.c
+LIBFT_SRCS = libft/libft.c
 
 COMMON_SRCS = $(LIBFT_SRCS) \
+			  src/ft_split_args.c \
+			  src/ft_split_utils.c \
+			  src/ft_split_args_utils.c \
+			  src/ft_split.c \
 			  src/init/ft_flags.c \
 			  src/init/ft_flags_helper.c \
 			  src/init/ft_main_utils.c \
@@ -33,8 +36,6 @@ COMMON_SRCS = $(LIBFT_SRCS) \
 			  src/sort/ft_sort_big.c \
 			  src/bench/ft_bench_print.c \
 			  src/bench/ft_bench_write.c \
-			  src/ft_split_args.c \
-			  src/ft_split.c \
 			  src/bench/ft_bench_updater.c
 
 SRCS = src/main.c $(COMMON_SRCS)
