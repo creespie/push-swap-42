@@ -33,6 +33,8 @@ COMMON_SRCS = $(LIBFT_SRCS) \
 			  src/sort/ft_sort_big.c \
 			  src/bench/ft_bench_print.c \
 			  src/bench/ft_bench_write.c \
+			  src/ft_split_args.c \
+			  src/ft_split.c \
 			  src/bench/ft_bench_updater.c
 
 SRCS = src/main.c $(COMMON_SRCS)

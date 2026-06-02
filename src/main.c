@@ -1,29 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
+#include "libft.h"
 
 static int	ft_prepare_stack(int argc, char *argv[], t_app *app)
 {
-	int	*arr;
+	char	**nums;
+	int		num_argc;
+	int		*arr;
 
-	if (!ft_check_errors(argc, argv))
-		return (0);
-	arr = malloc(sizeof(int) * (argc - 1));
+	nums = ft_split_args(argc, argv, &num_argc);
+	if (!nums)
+		return (write(2, "Error\n", 6), 0);
+	if (num_argc <= 1)
+		return (ft_free_split_args(nums), 0);
+	if (!ft_check_errors(num_argc, nums))
+		return (ft_free_split_args(nums), 0);
+	arr = malloc(sizeof(int) * (num_argc - 1));
 	if (!arr)
-		return (0);
-	if (!ft_array_handling(argc, argv, arr, &app->a))
-		return (free(arr), 0);
+		return (ft_free_split_args(nums), 0);
+	if (!ft_array_handling(num_argc, nums, arr, &app->a))
+		return (free(arr), ft_free_split_args(nums), 0);
+	app->argc = num_argc;
 	free(arr);
+	ft_free_split_args(nums);
 	return (1);
 }
 

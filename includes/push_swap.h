@@ -6,7 +6,7 @@
 /*   By: lmezzaba <lmezzaba@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 12:00:00 by lmezzaba          #+#    #+#             */
-/*   Updated: 2026/05/29 12:00:00 by lmezzaba         ###   ########.fr       */
+/*   Updated: 2026/06/02 12:36:57 by lmezzaba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	ft_lstadd_back_ps(t_stack **lst, t_stack *new);
 t_stack	*ft_lstlast_ps(t_stack *lst);
 int		ft_lst_count(t_stack *stack);
 void	ft_close_circle(t_stack *stack);
+char	**ft_split_args(int argc, char **argv, int *new_argc);
+void	ft_free_split_args(char **args);
 int		ft_check_errors(int argc, char *argv[]);
 int		ft_check_double(int *arr, int size);
 int		ft_write_err(void);
