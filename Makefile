@@ -13,6 +13,7 @@ COMMON_SRCS = $(LIBFT_SRCS) \
 			  src/ft_split.c \
 			  src/init/ft_flags.c \
 			  src/init/ft_flags_helper.c \
+			  src/init/ft_main_helper.c \
 			  src/init/ft_main_utils.c \
 			  src/init/ft_array.c \
 			  src/checks/ft_checks.c \

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 #include "get_next_line.h"
 
 static int	ft_exec_line(char *str, t_stack **stack_a, t_stack **stack_b)
