@@ -129,6 +129,8 @@ void	ft_sort_everything(t_stack **stack_a, t_stack **stack_b);
 void	ft_chunk_sort(t_stack **stack_a, t_stack **stack_b);
 void	ft_ins_sort(t_stack **stack_a, t_stack **stack_b);
 void	ft_bench_update(t_stack *stack, t_op op);
+void	ft_flag_checker(char *flag, int *strategy, int *numbers_flags);
+void	ft_shift_args(char *argv[], int i, int argc);
 int		ft_strcmp_flag(const char *s1, const char *s2);
 int		ft_is_flag(char *arg);
 int		ft_remove_flags(int argc, char *argv[]);

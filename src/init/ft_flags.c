@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	ft_shift_args(char *argv[], int i, int argc)
+void	ft_shift_args(char *argv[], int i, int argc)
 {
 	while (i < argc - 1)
 	{
@@ -21,7 +21,7 @@ static void	ft_shift_args(char *argv[], int i, int argc)
 	}
 }
 
-static int	ft_remove_flags(int argc, char *argv[])
+int	ft_remove_flags(int argc, char *argv[])
 {
 	int	i;
 

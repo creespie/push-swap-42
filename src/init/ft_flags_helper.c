@@ -39,20 +39,15 @@ int	ft_is_flag(char *arg)
 	return (0);
 }
 
-int	ft_remove_flags(int argc, char *argv[])
+void	ft_flag_checker(char *flag, int *strategy, int *numbers_flags)
 {
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (ft_is_flag(argv[i]))
-		{
-			ft_shift_args(argv, i, argc);
-			argc--;
-			i--;
-		}
-		i++;
-	}
-	return (argc);
+	(*numbers_flags)++;
+	if (ft_strcmp_flag(flag, "--simple") == 0)
+		*strategy = FLAG_SIMPLE;
+	else if (ft_strcmp_flag(flag, "--medium") == 0)
+		*strategy = FLAG_MEDIUM;
+	else if (ft_strcmp_flag(flag, "--complex") == 0)
+		*strategy = FLAG_COMPLEX;
+	else if (ft_strcmp_flag(flag, "--adaptive") == 0)
+		*strategy = FLAG_ADAPTIVE;
 }
